@@ -13,7 +13,7 @@ public class Story_Game_2020 extends Applet {
     @Override
     
     // Main method
-    public static void main(String[] args) {
+    public static void main(String[] args, Graphics g) {
         // Declare three words
         String word_1, word_2, word_3;
         
