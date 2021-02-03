@@ -6,7 +6,11 @@ package story_game_2020;
  * @author catofschroedinger
  */
 
-public class Story_Game_2020 {
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class Story_Game_2020 extends Applet {
+    @Override
     
     // Main method
     public static void main(String[] args) {
@@ -42,10 +46,10 @@ public class Story_Game_2020 {
                 ));
         
         // Print the 3 words
-        System.out.println(word_1 + " | " + word_2 + " | " + word_3);
+        g.drawString(word_1 + " | " + word_2 + " | " + word_3);
         
         // Print the rule
-        System.out.println("Rule: " + l_rule);
+        g.drawString("Rule: " + l_rule);
     }
     
 }
