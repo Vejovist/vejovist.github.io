@@ -1,0 +1,68 @@
+ant -f /home/catofschroedinger/NetBeansProjects/Story_Game_2020 -Dnb.internal.action.name=run run
+init:
+Deleting: /home/catofschroedinger/NetBeansProjects/Story_Game_2020/build/built-jar.properties
+deps-jar:
+Updating property file: /home/catofschroedinger/NetBeansProjects/Story_Game_2020/build/built-jar.properties
+compile:
+run:
+db:Eagle | Bankrupt | Error
+db:Balloon | Effect | Cut
+db:Civics | Abortion | Cadaver
+db:Basil | Bees | Exhale
+db:Chills | Chills | Acronym
+db:Amaranth | Effect | Euphoria
+db:Adequate | Bandits | Crouton
+db:Abstract | Breeze | Academia
+db:Civics | Backwards | Eve
+db:Egotist | Comb | Cadaver
+db:Balloon | Drainage | Algebra
+db:Darkness | Academia | Duality
+db:Alchemy | Dough | Episodic
+db:Cyanide | Embark | Eject
+db:Bleeding | Bachelor | Devil
+db:Drunk | Dagger | Civics
+db:Cold | Arson | Backwards
+db:Exorcist | Duality | Bankrupt
+db:Eidetic | Dessert | Atomic
+db:Emerald | Driving | Cremate
+db:Chills | Dusty | Academia
+db:Abortion | Carnival | Bachelor
+db:Drainage | Duality | Arson
+db:Closure | Eidetic | Bachelor
+db:Adequate | Basil | Atomic
+db:Balancing | Eve | Crouton
+db:Echidna | Commercial | Enact
+db:Academia | Amnesia | Ancestry
+db:Amnesia | Amaranth | Dusty
+db:Cursed | Civics | Balsamic
+db:Breeze | Dessert | Duality
+db:Demonic | Acronym | Ancestry
+db:Depict | Balancing | Comb
+db:Eidetic | Drainage | Balancing
+db:Draft | Ergo | Cement
+db:Drunk | Ancestry | Balancing
+db:Abundant | Draft | Amnesia
+db:Devil | Baklava | Dystopia
+db:Balsamic | Cadaver | Desert
+db:Eidetic | Dyes | Brain
+db:Dusty | Amaranth | Cursed
+db:Cut | Balancing | Bankrupt
+db:Adequate | Ancestry | Abstract
+db:Exhale | Bachelor | Exhale
+db:Bees | Bees | Breeze
+db:Amaranth | Bleeding | Demonic
+db:Backwards | Bees | Euphoria
+db:Chairs | Edge | Cyanide
+db:Bachelor | Dusty | Carnival
+db:Dyes | Comb | Duality
+db:Breeze | Academia | Babysitter
+db:Dough | Error | Aviation
+db:Acrylic | Cadaver | Catnip
+db:Eagle | Duality | Abstract
+db:Catnip | Catnip | Closure
+db:Emerald | Desert | Cyanide
+db:Balsamic | Aviation | Barbecue
+db:Demonic | Cold | Bees
+Demonic | Cold | Bees
+Rule: No A
+BUILD SUCCESSFUL (total time: 0 seconds)
