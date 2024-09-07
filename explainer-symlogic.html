@@ -15,256 +15,298 @@
             <a href="">Dummy Link</a>
         </div>
         <div class="content">
-            <p>
-                <md-block>
-                    # Introduction to Set Theory and Symbolic Logic
-                    # Table of Contents
-                    * [Preface](#preface)
-                    * [Basic Set Theory](#basic-set-theory)
-                        * [What are sets?](#what-are-sets)
-                        * [Properties of Sets](#properties-of-sets)
-                            * [Set Membership](#set-membership)
-                            * [Cardinality and Infinite Sets](#cardinality-and-infinite-sets)
-                            * [Subsets and Proper Subsets](#subsets-and-proper-subsets)
-                            * [Identity](#identity)
-                        * [Set Operations](#set-operations)
-                            * [Binary Operations](#binary-operations)
-                            * [Powerset](#powerset)
-                        * [Special Number Sets](#special-number-sets)
-                        * [Set-Builder Notation](#set-builder-notation)
-                            * [Roster Notation](#roster-notation)
-                            * [Build a Set!](#build-a-set)
-                            * [Interval Notation](#interval-notation)
-                    * [Symbolic Logic](#symbolic-logic)
-                        * [Mathematics as a Language](#mathematics-as-a-language)
-                            * [The Issue of Ambiguity](#the-issue-of-ambiguity)
-                            * [Propositions](#propositions)
-                            * [Logical Connectives](#logical-connectives)
-                            * [Quantifiers](#quantifiers)
-
-
-                    # Preface
-                    This is not a substitute for an actual course in set theory and symbolic logic, but a fun little explainer with (hopefully) useful information for other branches and fields such as calculus and computing.
-
-                    All information in this file has been sourced from:
-                    * old lecture notes
-                    * old notes from [this](https://www.coursera.org/learn/mathematical-thinking) online course (and corresponding book by Keith Devlin)
-                    * Hrbacek, Karel, and Thomas Jech. *Introduction to Set Theory*. 3rd ed., CRC Press, 1999. 
-                        * (but just a little bit)
-
-                    # Basic Set Theory
-                    ## What are sets?
-                    A **set** is a grouping of some collection of unique items. You could have a set of numbers, a set of symbols, a set of names on a watchlist, etc. What's most notable about sets, however, is that they are not physical groupings. A stack of bricks on a Lego tower is not a set, nor are the beads in a bracelet, or an assortment of apples at the country fair. 
-
-                    Most of the time in mathematics, we deal with sets of numbers, variables, functions, or other sets. For the sake of simplicity, we'll just deal with sets of numbers in this file. This can be notated by curly braces, with each item (or *element* or *member*) separated by commas. For example, let's say we have a set $S$.
-                    > It should be noted that &mdash; similar to variables &mdash; sets can be referred to by any capital letter, but $S$ is often chosen out of convenience.
-
-                    This is an example of a valid set:
-                    $$S = \{2, 3, 5, 7, 11\}$$
-                    Sets are formed based only on what elements are actually in them, meaning order doesn't matter and only one instance of each element actually "counts" so to speak. In other words, $\{1, 2, 3\} = \{3, 1, 2\}$ because doesn't matter, and the badly formed set $\{2, 7, 0, 2\}$ is the same as $\{7, 0, 2\}$; it doesn't matter (or even really make sense) to ask "which $2$", rather, it's more important that the $2$ is there at all.
-                    > Oh, and also sets can have no elements in them. This is referred to as the "empty set" or "null set" and is written like $\{\}$, or sometimes $\varnothing$.
-                    ## Properties of Sets
-                    ### Set Membership
-                    Since the most important aspect of sets is whether something is or isn't inside of one, mathematicians being mathematicians came up with symbols for that. If we take $x$ to be a variable, and $S$ to be a set, then the expression $x \in S$ means any of the following (they're all equivalent, pick your favourite):
-                    * $x$ is an **element** of $S$
-                    * $x$ is a **member** of $S$
-                    * $x$ **belongs** to $S$
-                    * $x$ is **in** $S$
-
-                    Similarly, $x \notin S$ is the negation of $x \in S$, that is:
-                    * $x$ is not an element of $S$
-                    * $x$ is not a member of $S$
-                    * $x$ does not belong to $S$
-                    * $x$ is not in $S$
-
-                    To use a more concrete example, take $S = \{2, 3, 5, 7, 11\}$ from earlier. We can say (from looking at it, this is a simple example) that $2$ is in $S$, but $9$ isn't. Or, in mathematical notation:
-                    $$2 \in S$$
-                    $$9 \notin S$$
-                    > To draw this symbol ($\in$) for proofs, draw a "C" with a line through it. Try not to draw the line past the left side of the "C". Do not draw a capital "E", as it may get confusing later. 
-
-                    ### Cardinality and Infinite Sets
-                    Cardinality is the number of elements in a set. This can also be called the *size* of a set. As noted earlier, sets can have a "size" of 0 and they can have finite elements, but they can also have infinite elements.
-
-                    The size of a set is denoted by a vertical line on both sides of the set letter. For example, define a set $A = \{-1, 2, 4\}$. If you count the number of elements, you get 3, so this is written:
-                    $$|A| = 3$$
-                    For those familiar with absolute value, this is the exact same notation, please don't get confused. <br> For those unfamiliar with absolute value, look it up.
-
-                    Just kidding. Essentially, the absolute value function does nothing with positive inputs (and 0), but turns negatives inputs into their positive counterparts. $|3| = 3$, $|0| = 0$, $|-5| = 5$, etc. Again, please don't get confused.
-                    > If you see curly braces or a big capital letter, it's probably cardinality (size), but if it's just a number or lowercase letter, it's probably absolute value.
-
-                    If a set has infinite elements, some people may denote this as $|S| = \infty$, but the usage of infinity here is a little too generalized, and doesn't take into account that "some infinities are greater than other infinities" (which is beyond the scope of this). Ellipses can be used when the elements follow a clear pattern. For example, the finite set of all integers from 1 to 216000 could be written by hand (although I think your hand would hurt), but is more easily written like so:
-                    $$S = \{1, 2, 3, ..., 215999, 216000\}$$
-                    Similarly, the infinite set of integers greater than or equal to 3 can be written like:
-                    $$A = \{3, 4, 5, ...\}$$
-                    And the infinite set of all integers less than 2 can be written:
-                    $$B = \{..., -2, -1, 0, 1\}$$
-                    > Include as many elements as you need to make the pattern clear. This may differ between person to person. If only there was a better way... [Foreshadowing is a literary device in whi&mdash;](#set-builder-notation)
-
-                    ### Subsets and Proper Subsets
-                    Define two sets $A$ and $B$. If every element in $A$ is also in $B$, we say that "$A$ is a subset of $B$". Note that this may not be true the other way around. If every element in $A$ is also in $B$, there *could* be other elements in $B$ that aren't in $A$.
-
-                    For example, let's say $A = \{1, 2\}$ and $B = \{3, 2, 1\}$. By inspection (a fancy word for "looking at it"), all elements in $A$ are clearly in $B$, so $A$ is a **subset** of $B$.
-
-                    As another example, let's say $A = \{3, 0\}$ and $B = \{0, 3\}$. As you can see, every element in $A$ is in $B$, so $A$ is a subset of $B$. But also, every element in $B$ is in $A$, so $B$ is a a subset of $A$. If both of these statements are true, it must be because both $A$ and $B$ contain the exact same elements, so they must be equal.
-
-                    > This is the definition of set equality! $A = B$ *if and only if* $A$ is a subset of $B$ *and* $B$ is a subset of $A$. See [logical connectives](#logical-connectives) for more information.
-
-                    Another term that might come up is "proper subset." A set $A$ is a **proper subset** of $B$ if $A$ is a subset of $B$, but $A\neq B$. Or in other words, every element of $A$ is in $B$, but $B$ contains elements (at least one) that aren't in $A$. For an example of this, look at the first example in this section. 
-
-                    You may have noticed that I refrained from introducing any new symbols up to this point (in this section, anyway). Why is that? Okay... here's the deal. I'll show some notational examples here using the notation that *I* was taught. This is by no means universal. Read the note at the end of this section for more information.
-
-                    $$\text{Let } A, B \text{ be sets.}$$
-                    Subset example:
-                    $$\text{If } A = \{1, 2, 3\} \text{ and } B = \{5, 3, 4, 2, 1\} \text{ then } A \subseteq B$$
-                    Set equality example:
-                    $$\text{If } A = \{-2, 0.5\} \text{ and } B = \{0.5, -2\} \text{ then } A \subseteq B \text{ and } B \subseteq A \text{, so } A = B$$
-                    Proper subset example:
-                    $$\text{If } A = \{1\} \text{ and } B = \{1, 2, 3, 4\} \text{ then } A \subseteq B \text{ and } A \neq B \text{, so } A \subset B$$
-
-
-                    > The notation is this section doesn't have a clear consensus. Some authors use "$\subset$" to refer to subsets and "$\subseteq$" to refer to strict subsets, while others use "$\subseteq$" as a parallel to $\leq$; less than *or equal to*. $\LaTeX$, the typesetting system I and a lot of actual mathematicians use, has laid its finger on the scale by assigning "$\subseteq$" with the name "subseteq" (**subset** or **eq**ual to). Ask your professor as to which one is being used where in your given course.
-
-                    ### Identity
-                    An **identity** in mathematics is just any equality that holds true for all values in a specific domain. For example, a common algebraic identity is $a + 0 = a$ for any value of $a$. Another common example is the trigonometric identity $\sin^2{\theta} + \cos^2{\theta} = 1$, which is true for all real values of $\theta$. An example of an identity that *isn't* an identity would be $x + y = y$, which is evidently not true for, say, $x = 1$ and $y = 2$, as $1 + 2 \neq 2$.
-
-                    Recall the definition of set equality. Any set $S$ is equal to itself because any set $S$ is a subset of itself (every element in $S$ is also in $S$).
-                    > That is, $S = S$. This seems really obvious, and that's because it is. But you can't rely on "common sense" when it comes to mathematical intuition. This will come up later in the [logic](#mathematics-as-a-language) section, but for now, just keep that in mind.
-
-                    It follows, in the same manner as algebraic properties, that for any sets $A, B, C$:
-                    $$\text{if } A = B \text{ then } B = A \quad \text{(commutativity)}$$
-                    $$\text{if } A = B \text{ and } B = C \text{, then } A = C \quad \text{(transitive property)}$$
-                    And by combining set membership and the transitive property, we get:
-                    $$\text{if } A = B \text{ and } A \in C \text{, then } B \in C$$
-                    $$\text{if } A = B \text{ and } C \in A \text{, then } C \in B$$
-
-                    ## Set Operations
-                    ### Binary Operations
-                    Let $A$ and $B$ be sets. There are three binary (takes in two inputs) operations that can be performed on sets. Anyone who's ever worked with the Blender boolean modifier will be intimately familiar with this. They are:
-                    * **Union** ($A \cup B$): produces a set containing all elements in $A$ *and* $B$ (or both).
-                    * **Intersection** ($A \cap B$): produces a set containing all elements in *both* $A$ and $B$.
-                    * **Difference** ($A - B$): produces a set containing all elements in $A$ that *aren't* in $B$. It then follows that if $A\subseteq B$, then since all elements of $A$ are also in $B$, $A - B = \varnothing$.
-
-                    For example, let $A = \{1, 2, 3, 4\}$ and $B = \{2,4,6,8\}$. Applying all three operations, we get:
-                    $$A \cup B = \{1, 2, 3, 4, 6, 8\}$$
-                    $$A \cap B = \{2, 4\}$$
-                    $$A - B = \{1, 3\}$$
-
-                    > If there are no elements in common between sets $A$ and $B$ &mdash; if $A \cap B = \varnothing$ &mdash; then $A$ and $B$ are called **disjoint sets**.
-
-                    > Sometimes the difference operation is notated as $A \backslash B$ instead of $A - B$. Ask your professor which is right for you.
-
-                    ### Powerset
-                    There are also other set operations, such as the **powerset** operation, which is the set of all possible subsets of a set. Don't make this a drinking game, the number of "set" utterances in the previous sentence was too much, so let's break that down.
-
-                    Suppose we have some set $S$. Let's define a powerset $\mathcal{P}(S)$ and imagine it's a box with nothing in it... yet. Assuming $S$ isn't an empty set &mdash; that is, it contains at least one element &mdash; the empty set itself $(\varnothing)$ is a subset of $S$, so we put it in the $\mathcal{P}(S)$ box. Also, since we're not talking about proper subsets, just subsets in general, we can also put the entirety of $S$ into the box. From here, we put every other of every possible length subset of $S$ into the box. Consider this analogy: if $S$ was a candy bowl, what are the different combinations of candy you can take out of the bowl (and yes, taking nothing and taking everything are both counted as "combinations").
-
-                    > Those familiar with combinatorics may point out the particular use of "combination" here, and not "permutation." This is because, as stated [previously](#what-are-sets), order doesn't matter.
-
-                    For example, let's say $S = \{1, 2, 3\}$. The powerset (all possible "candy combinations") is defined as follows:
-                    $$\mathcal{P}(S) = \{\{\},\{1\},\{2\},\{3\},\{1,2\},\{2,3\},\{1,3\},\{1,2,3\}\}$$
-                    This is also sometimes denoted as $2^S$, since the cardinality of the powerset is $2^{|S|}$, or in this case, $2^3 = 8$.
-
-                    ## Special Number Sets
-                    Some sets of numbers are so commonly referred to by mathematicians that they have their own names and symbols. The symbols used for these special sets are capital letters (like other sets) but with either bolding (like this: $\bm{R}$) or the Blackboard Bold typeface (like this: $\mathbb{R}$). For this file, I'll be using Blackboard Bold because it's more familiar to me (and slightly easier to handwrite).
-
-                    The most common special sets are:
-                    * Integers: $\mathbb{Z} = \{..., -2, -1, 0, 1, 2, ...\}$. Note: it's "Z" for "**Z**ahlen" (German for "numbers"). English isn't the only language.
-                    * Rational numbers: $\mathbb{Q}$ for any number that can be represented as a fraction of two integers. Don't ask why this one is "Q" and not "R", the history gets really messy.
-                    * Real numbers: $\mathbb{R}$ for the real numbers (both rational and irrational).
-                    > This one ($\mathbb{R}$) is used most often (until you get to complex analysis), and as such, it can often be assumed that when someone writes $x$ with no explicit set membership, that they meant "a real number $x$" or "$x \in \mathbb{R}$". In order to clear up ambiguity during proofs, it is advised you write something to the effect of "$x \in \mathbb{R}$" anyway, even if it's implied by course circumstance.
-                    * Complex numbers: $\mathbb{C}$. If you're not doing complex analysis, don't worry about this one. If you're doing complex analysis, please worry about this one.
-                    > Some textbooks may also list the natural numbers ($\mathbb{N}$) here, but there's one small issue: it's not exactly clear what it encompasses, between authors. Some people may define it as "the set of non-negative integers" or $\mathbb{N} = \{0, 1, 2, 3, ...\}$, but others define it as "the set of positive integers" (excluding zero) or $\mathbb{N} = \{1, 2, 3, ...\}$. Always ask for clarification if you're unsure.
-
-                    Sometimes people put superscripts (symbols floating in the top right, like exponents) after the main set letter to further specify the set. This could be plus signs ($^+$) and minus signs ($^-$) to indicate positive and negative, respectively; $\mathbb{Z}^-$ would be the set of negative integers. This could also be inequality symbols; for example, $\mathbb{R}^{\geq 2}$ would be the set of real numbers greater than or equal to 2.
-                    > If you use this notation, do not place just a number in the superscript. $\mathbb{R}^{\geq 2}$ is very different from $\mathbb{R}^2$. Again, ask if you're unsure. Notation can sometimes be very subjective because humans are fickle and can't seem to agree on things, even in mathematics.
-
-                    There are, of course, other special sets like $\mathbb{W}$, $\mathbb{A}$, $\mathbb{X}$, and so on, but you need not concern yourself with them at this time. To prevent ambiguity, other special sets will likely be defined as such:
-                    $$\text{Let } \mathbb{P} \text{ be the set of [insert something here]}.$$
-
-                    ## Set-Builder Notation
-                    ### Roster Notation
-                    The notation for sets we've been using up until this point is called "roster notation", with "roster" being another word for "list". You can probably see why, you're just listing all the elements out, or enough to eke out a pattern. But what if there was a way to notate a bunch of numbers (or even infinite) with a common pattern? There is! I mean, you could just write it out using words, like so:
-                    * $S = \{\text{prime numbers}\}$
-                    * $S = \{\text{integers whose squares are bigger than 42}\}$
-                    * $S = \{\text{real numbers a person can write}\}$
-                    * $\text{etc.}$
-
-                    However, this can lead to ambiguity, and isn't very mathematical. Where are the symbols? See, mathematicians are busy and don't want to write a lot. The purpose of mathematical language is to be as concise and unambiguous as possible, so we can't have vagueness like this. What even is "real numbers a person can write", anyway? I mean, yeah, I guess you could write out a googolplex given enough time, but... why? Why do that to yourself? Why not do something fun like build a set?
-
-                    ### Build a Set!
-                    Welcome to Build-a-Set workshop, where I kind of lied about this being fun. But it is important. **Set-builder notation** is a method of notating sets by stating the property (or properties) each element has in common. There are three (questionably four) main parts to set-builder notation:
-                    1. The **variable** (usually $x$), which can have any value in
-                    2. The **domain** (this is the questionable one). The domain is just the set of values that $x$ could be, usually one of the [special sets](#special-number-sets) like $\mathbb{R}$ or $\mathbb{Z}$, or something. As noted in that section, in real analysis (as in "real numbers" not "real or fake"), it can be taken that $x \in \mathbb{R}$ unless otherwise stated, but it's good practice to write it anyway.
-                    3. The **separator**, which is either $|$ or $:$, depending on who's teaching. This is read as "such that" (often abbreviated to "s.t.") or "for which".
-                    4. The **predicate** (or the *rule*), which is the thing that needs to be true for all $x$ in the set. This is often notated as $\Phi(x)$ (the Greek letter phi). The predicate can be made up of multiple conditions, but it just called "the predicate" in the singular.
-
-                    Let's look at an example. Define a set $S$ as the following:
-                    $$S = \{x \in \mathbb{Z} : x^2 > 42\}$$
-                    In plain English, this is read as "the set of all $x$ that are integers such that the square of $x$ is greater than 42." Breaking this down into the four aforementioned parts, we get:
-
-                    * $S = \{...\}$ "The set of"
-                    * $x$ "all (values of) $x$..." (part 1)
-                    * $\in \mathbb{Z}$ "... that are integers" (part 2)
-                    * $:$ "such that" (part 3)
-                    * $x^2 > 42$ "the square of $x$ is greater than 42" (part 4)
-
-                    Sometimes the predicate just has English words in it because people can't agree on what notation to use. For instance, what do you think this means?:
-                    $$A = \{x : x \in \mathbb{R} \text{ and } x \text{ is prime}\}$$
-
-                    ...
-
-                    Yes, it's the set of all real prime numbers (which is a tiny bit redundant because prime numbers are defined to be real numbers, but that's besides the point). Notice that the domain can come after the separator, as along as it's conjoined to the predicate by the word "and" or [symbolic equivalent](#logical-connectives). What about this one?:
-                    $$B = \{x \in \mathbb{Q} : -1 \leq x \leq 3 \text{ or } x^2 = 4\}$$
-
-                    ...
-
-                    This is the set of all rationals between -1 and 3 (including both -1 and 3) and also -2 (because of the second condition). If you didn't get that right away, don't worry, you get better with practice. Note that the predicate here is the *entire expression* "$-1 \leq x \leq 3 \text{ or } x^2 = 4$", which includes both conditions. If it helps, you can think of the predicate as a list of requirements to obtain membership into the set. Elements that meet these requirements are allowed in, but elements that don't, aren't. With the above example, $-2$ is allowed in because of the word "or" ("meet req. 1 or req. 2, I don't care which"). If it had instead said "and" (both requirements need to be met to "gain entry"), $-2$ isn't between -1 and 3, and thus wouldn't be in the set (not "allowed in").
-
-                    This wouldn't be much of a workshop if I didn't allow you to make your own sets, though, would it? Here are a few exercises to try. I'll put some [solutions](#build-a-set-solutions) at the end of the file. There are, of course, multiple ways to complete these, so don't be put out if your solutions don't match the ones I've given.
-                    1. Define a set $S$ of all negative even numbers.
-                    2. Define a set $S$ of all prime numbers greater than 2.
-                    3. Define a set $A$ for all rational numbers $x$ such that $\cos x$ is an integer.
-                    4. Suppose $f(x) = x^2 + 1$. Define a set $B$ of all real number inputs to $f(x)$ that result in a real number less than or equal to 0. What's the cardinality of this set?
-
-                    ### Interval Notation
-                    This part isn't really part of set-builder notation, but it's important to know anyway. The notation in this part is consistent, but may overlap with other branches of mathematics, so try not to get confused.
-
-                    **Intervals** are continuous sets of real numbers between two endpoints. "Continuous" here meaning there are no numbers missing between the two endpoints. They're all in there. There are three primary types of intervals, which given any real numbers $a$ and $b$, include:
-                    * **Open intervals**, denoted $(a, b)$, which are equivalent to $\{x : a < x < b\}$
-                    * **Closed intervals**, denoted $[a, b]$, which are equivalent to $\{x : a \leq x \leq b\}$
-                    * **Half-open intervals**, denoted as either:
-                        * $[a, b) = \{x : a \leq x < b\}$
-                        * $(a, b] = \{x : a < x \leq b\}$
-
-                    In other words, open intervals *exclude* both endpoints, closed intervals *include* both endpoints, and half-open intervals include one endpoint but excludes the other.
-
-                    > Don't ask whether the interval is "half-open" or "half-closed"; they mean the same thing.
-
-                    Intervals can also have infinity and negative infinity as possible endpoints, but since infinity isn't a number (you can never actually *reach* infinity, no matter how hard you try), that endpoint is automatically denoted as open. Given any real number $c$, we get the following equivalences:
-                    * $[c, \infty) = \{x : c \leq x\}$
-                    * $(c, \infty) = \{x : c < x\}$
-                    * $(-\infty, c] = \{x : x \leq c\}$
-                    * $(-\infty, c) = \{x : x < c\}$
-                    * $(-\infty, \infty) = \{x : x \in \mathbb{R}\} = \mathbb{R}$
-
-                    Since intervals are sets, set membership still applies. And since set membership applies, you can put intervals into set-builder notation. Let's say you wanted to define a set $S$ where every real number $x$ has to either be between -1 and 3 (inclusive) or its square equals 16. How would you write this?
-
-                    ...
-
-                    Here's a possible solution:
-                    $$S = \{x \in \mathbb{R} : x \in [-1, 3] \text{ or } x^2 = 16\}$$
-                    This is, of course, equivalent to:
-                    $$S = \{x \in \mathbb{R} : -1 \leq x \leq 3 \text{ or } x^2 = 16\}$$
-
-                    > A common interval that'll probably come up a bunch is the **unit interval** $[0, 1]$, or the closed interval between 0 and 1. This is sometimes denoted by the capital letter "$I$".
-
-                    Let's try building some intervals, shall we? Only read the [solutions](#interval-notation-solutions) after you've tried the exercises. Write an interval for each of the following statements:
-                    1. The set of real numbers between 1 and 2, including 1 and 2.
-                    2. The set of real numbers that are less than or equal to 5, but greater than 0.
-                    3. The set of non-positive real numbers.
-                    4. The set of negative real numbers greater than -2.
-                </md-block>
-            </p>
-        </div>
+            <h1 id="introduction-to-set-theory-and-symbolic-logic">Introduction to Set Theory and Symbolic Logic</h1>
+            <h1 id="table-of-contents">Table of Contents</h1>
+            <ul class="incremental">
+            <li><a href="#preface">Preface</a></li>
+            <li><a href="#basic-set-theory">Basic Set Theory</a>
+            <ul class="incremental">
+            <li><a href="#what-are-sets">What are sets?</a></li>
+            <li><a href="#properties-of-sets">Properties of Sets</a>
+            <ul class="incremental">
+            <li><a href="#set-membership">Set Membership</a></li>
+            <li><a href="#cardinality-and-infinite-sets">Cardinality and Infinite Sets</a></li>
+            <li><a href="#subsets-and-proper-subsets">Subsets and Proper Subsets</a></li>
+            <li><a href="#identity">Identity</a></li>
+            </ul></li>
+            <li><a href="#set-operations">Set Operations</a>
+            <ul class="incremental">
+            <li><a href="#binary-operations">Binary Operations</a></li>
+            <li><a href="#powerset">Powerset</a></li>
+            </ul></li>
+            <li><a href="#special-number-sets">Special Number Sets</a></li>
+            <li><a href="#set-builder-notation">Set-Builder Notation</a>
+            <ul class="incremental">
+            <li><a href="#roster-notation">Roster Notation</a></li>
+            <li><a href="#build-a-set">Build a Set!</a></li>
+            <li><a href="#interval-notation">Interval Notation</a></li>
+            </ul></li>
+            </ul></li>
+            <li><a href="#symbolic-logic">Symbolic Logic</a>
+            <ul class="incremental">
+            <li><a href="#mathematics-as-a-language">Mathematics as a Language</a>
+            <ul class="incremental">
+            <li><a href="#the-issue-of-ambiguity">The Issue of Ambiguity</a></li>
+            <li><a href="#propositions">Propositions</a></li>
+            <li><a href="#logical-connectives">Logical Connectives</a></li>
+            <li><a href="#quantifiers">Quantifiers</a></li>
+            </ul></li>
+            </ul></li>
+            </ul>
+            <h1 id="preface">Preface</h1>
+            <p>This is not a substitute for an actual course in set theory and symbolic logic, but a fun little explainer with (hopefully) useful information for other branches and fields such as calculus and computing.</p>
+            <p>All information in this file has been sourced from:</p>
+            <ul class="incremental">
+            <li>old lecture notes</li>
+            <li>old notes from <a href="https://www.coursera.org/learn/mathematical-thinking">this</a> online course (and corresponding book by Keith Devlin)</li>
+            <li>Hrbacek, Karel, and Thomas Jech. <em>Introduction to Set Theory</em>. 3rd ed., CRC Press, 1999.
+            <ul class="incremental">
+            <li>(but just a little bit)</li>
+            </ul></li>
+            </ul>
+            <h1 id="basic-set-theory">Basic Set Theory</h1>
+            <h2 id="what-are-sets">What are sets?</h2>
+            <p>A <strong>set</strong> is a grouping of some collection of unique items. You could have a set of numbers, a set of symbols, a set of names on a watchlist, etc. What’s most notable about sets, however, is that they are not physical groupings. A stack of bricks on a Lego tower is not a set, nor are the beads in a bracelet, or an assortment of apples at the country fair.</p>
+            <p>Most of the time in mathematics, we deal with sets of numbers, variables, functions, or other sets. For the sake of simplicity, we’ll just deal with sets of numbers in this file. This can be notated by curly braces, with each item (or <em>element</em> or <em>member</em>) separated by commas. For example, let’s say we have a set <span class="math-inline"><em>S</em></span>.</p>
+            <blockquote>
+            <p>It should be noted that — similar to variables — sets can be referred to by any capital letter, but <span class="math-inline"><em>S</em></span> is often chosen out of convenience.</p>
+            </blockquote>
+            <p>This is an example of a valid set: <br /><span class="math-display"><em>S</em> = {2, 3, 5, 7, 11}</span><br /> Sets are formed based only on what elements are actually in them, meaning order doesn’t matter and only one instance of each element actually “counts” so to speak. In other words, <span class="math-inline">{1, 2, 3} = {3, 1, 2}</span> because doesn’t matter, and the badly formed set <span class="math-inline">{2, 7, 0, 2}</span> is the same as <span class="math-inline">{7, 0, 2}</span>; it doesn’t matter (or even really make sense) to ask “which <span class="math-inline">2</span>”, rather, it’s more important that the <span class="math-inline">2</span> is there at all. &gt; Oh, and also sets can have no elements in them. This is referred to as the “empty set” or “null set” and is written like <span class="math-inline">{}</span>, or sometimes <span class="math-inline">⌀</span>.</p>
+            <h2 id="properties-of-sets">Properties of Sets</h2>
+            <h3 id="set-membership">Set Membership</h3>
+            <p>Since the most important aspect of sets is whether something is or isn’t inside of one, mathematicians being mathematicians came up with symbols for that. If we take <span class="math-inline"><em>x</em></span> to be a variable, and <span class="math-inline"><em>S</em></span> to be a set, then the expression <span class="math-inline"><em>x</em> ∈ <em>S</em></span> means any of the following (they’re all equivalent, pick your favourite):</p>
+            <ul class="incremental">
+            <li><span class="math-inline"><em>x</em></span> is an <strong>element</strong> of <span class="math-inline"><em>S</em></span></li>
+            <li><span class="math-inline"><em>x</em></span> is a <strong>member</strong> of <span class="math-inline"><em>S</em></span></li>
+            <li><span class="math-inline"><em>x</em></span> <strong>belongs</strong> to <span class="math-inline"><em>S</em></span></li>
+            <li><span class="math-inline"><em>x</em></span> is <strong>in</strong> <span class="math-inline"><em>S</em></span></li>
+            </ul>
+            <p>Similarly, <span class="math-inline"><em>x</em> ∉ <em>S</em></span> is the negation of <span class="math-inline"><em>x</em> ∈ <em>S</em></span>, that is:</p>
+            <ul class="incremental">
+            <li><span class="math-inline"><em>x</em></span> is not an element of <span class="math-inline"><em>S</em></span></li>
+            <li><span class="math-inline"><em>x</em></span> is not a member of <span class="math-inline"><em>S</em></span></li>
+            <li><span class="math-inline"><em>x</em></span> does not belong to <span class="math-inline"><em>S</em></span></li>
+            <li><span class="math-inline"><em>x</em></span> is not in <span class="math-inline"><em>S</em></span></li>
+            </ul>
+            <p>To use a more concrete example, take <span class="math-inline"><em>S</em> = {2, 3, 5, 7, 11}</span> from earlier. We can say (from looking at it, this is a simple example) that <span class="math-inline">2</span> is in <span class="math-inline"><em>S</em></span>, but <span class="math-inline">9</span> isn’t. Or, in mathematical notation: <br /><span class="math-display">2 ∈ <em>S</em></span><br /> <br /><span class="math-display">9 ∉ <em>S</em></span><br /></p>
+            <blockquote>
+            <p>To draw this symbol (<span class="math-inline">∈</span>) for proofs, draw a “C” with a line through it. Try not to draw the line past the left side of the “C”. Do not draw a capital “E”, as it may get confusing later.</p>
+            </blockquote>
+            <h3 id="cardinality-and-infinite-sets">Cardinality and Infinite Sets</h3>
+            <p>Cardinality is the number of elements in a set. This can also be called the <em>size</em> of a set. As noted earlier, sets can have a “size” of 0 and they can have finite elements, but they can also have infinite elements.</p>
+            <p>The size of a set is denoted by a vertical line on both sides of the set letter. For example, define a set <span class="math-inline"><em>A</em> = { − 1, 2, 4}</span>. If you count the number of elements, you get 3, so this is written: <br /><span class="math-display">|<em>A</em>| = 3</span><br /> For those familiar with absolute value, this is the exact same notation, please don’t get confused. <br> For those unfamiliar with absolute value, look it up.</p>
+            <p>Just kidding. Essentially, the absolute value function does nothing with positive inputs (and 0), but turns negatives inputs into their positive counterparts. <span class="math-inline">|3| = 3</span>, <span class="math-inline">|0| = 0</span>, <span class="math-inline">| − 5| = 5</span>, etc. Again, please don’t get confused.</p>
+            <blockquote>
+            <p>If you see curly braces or a big capital letter, it’s probably cardinality (size), but if it’s just a number or lowercase letter, it’s probably absolute value.</p>
+            </blockquote>
+            <p>If a set has infinite elements, some people may denote this as <span class="math-inline">|<em>S</em>| = ∞</span>, but the usage of infinity here is a little too generalized, and doesn’t take into account that “some infinities are greater than other infinities” (which is beyond the scope of this). Ellipses can be used when the elements follow a clear pattern. For example, the finite set of all integers from 1 to 216000 could be written by hand (although I think your hand would hurt), but is more easily written like so: <br /><span class="math-display"><em>S</em> = {1, 2, 3, ..., 215999, 216000}</span><br /> Similarly, the infinite set of integers greater than or equal to 3 can be written like: <br /><span class="math-display"><em>A</em> = {3, 4, 5, ...}</span><br /> And the infinite set of all integers less than 2 can be written: <br /><span class="math-display"><em>B</em> = {...,  − 2,  − 1, 0, 1}</span><br /></p>
+            <blockquote>
+            <p>Include as many elements as you need to make the pattern clear. This may differ between person to person. If only there was a better way… <a href="#set-builder-notation">Foreshadowing is a literary device in whi—</a></p>
+            </blockquote>
+            <h3 id="subsets-and-proper-subsets">Subsets and Proper Subsets</h3>
+            <p>Define two sets <span class="math-inline"><em>A</em></span> and <span class="math-inline"><em>B</em></span>. If every element in <span class="math-inline"><em>A</em></span> is also in <span class="math-inline"><em>B</em></span>, we say that “<span class="math-inline"><em>A</em></span> is a subset of <span class="math-inline"><em>B</em></span>”. Note that this may not be true the other way around. If every element in <span class="math-inline"><em>A</em></span> is also in <span class="math-inline"><em>B</em></span>, there <em>could</em> be other elements in <span class="math-inline"><em>B</em></span> that aren’t in <span class="math-inline"><em>A</em></span>.</p>
+            <p>For example, let’s say <span class="math-inline"><em>A</em> = {1, 2}</span> and <span class="math-inline"><em>B</em> = {3, 2, 1}</span>. By inspection (a fancy word for “looking at it”), all elements in <span class="math-inline"><em>A</em></span> are clearly in <span class="math-inline"><em>B</em></span>, so <span class="math-inline"><em>A</em></span> is a <strong>subset</strong> of <span class="math-inline"><em>B</em></span>.</p>
+            <p>As another example, let’s say <span class="math-inline"><em>A</em> = {3, 0}</span> and <span class="math-inline"><em>B</em> = {0, 3}</span>. As you can see, every element in <span class="math-inline"><em>A</em></span> is in <span class="math-inline"><em>B</em></span>, so <span class="math-inline"><em>A</em></span> is a subset of <span class="math-inline"><em>B</em></span>. But also, every element in <span class="math-inline"><em>B</em></span> is in <span class="math-inline"><em>A</em></span>, so <span class="math-inline"><em>B</em></span> is a a subset of <span class="math-inline"><em>A</em></span>. If both of these statements are true, it must be because both <span class="math-inline"><em>A</em></span> and <span class="math-inline"><em>B</em></span> contain the exact same elements, so they must be equal.</p>
+            <blockquote>
+            <p>This is the definition of set equality! <span class="math-inline"><em>A</em> = <em>B</em></span> <em>if and only if</em> <span class="math-inline"><em>A</em></span> is a subset of <span class="math-inline"><em>B</em></span> <em>and</em> <span class="math-inline"><em>B</em></span> is a subset of <span class="math-inline"><em>A</em></span>. See <a href="#logical-connectives">logical connectives</a> for more information.</p>
+            </blockquote>
+            <p>Another term that might come up is “proper subset.” A set <span class="math-inline"><em>A</em></span> is a <strong>proper subset</strong> of <span class="math-inline"><em>B</em></span> if <span class="math-inline"><em>A</em></span> is a subset of <span class="math-inline"><em>B</em></span>, but <span class="math-inline"><em>A</em> ≠ <em>B</em></span>. Or in other words, every element of <span class="math-inline"><em>A</em></span> is in <span class="math-inline"><em>B</em></span>, but <span class="math-inline"><em>B</em></span> contains elements (at least one) that aren’t in <span class="math-inline"><em>A</em></span>. For an example of this, look at the first example in this section.</p>
+            <p>You may have noticed that I refrained from introducing any new symbols up to this point (in this section, anyway). Why is that? Okay… here’s the deal. I’ll show some notational examples here using the notation that <em>I</em> was taught. This is by no means universal. Read the note at the end of this section for more information.</p>
+            <p><br /><span class="math-display">Let <em>A</em>, <em>B</em> be sets.</span><br /> Subset example: <br /><span class="math-display">If <em>A</em> = {1, 2, 3} and <em>B</em> = {5, 3, 4, 2, 1} then <em>A</em> ⊆ <em>B</em></span><br /> Set equality example: <br /><span class="math-display">If <em>A</em> = { − 2, 0.5} and <em>B</em> = {0.5,  − 2} then <em>A</em> ⊆ <em>B</em> and <em>B</em> ⊆ <em>A</em>, so <em>A</em> = <em>B</em></span><br /> Proper subset example: <br /><span class="math-display">If <em>A</em> = {1} and <em>B</em> = {1, 2, 3, 4} then <em>A</em> ⊆ <em>B</em> and <em>A</em> ≠ <em>B</em>, so <em>A</em> ⊂ <em>B</em></span><br /></p>
+            <blockquote>
+            <p>The notation is this section doesn’t have a clear consensus. Some authors use “<span class="math-inline">⊂</span>” to refer to subsets and “<span class="math-inline">⊆</span>” to refer to strict subsets, while others use “<span class="math-inline">⊆</span>” as a parallel to <span class="math-inline">≤</span>; less than <em>or equal to</em>. LaTeX, the typesetting system I and a lot of actual mathematicians use, has laid its finger on the scale by assigning “<span class="math-inline">⊆</span>” with the name “subseteq” (<strong>subset</strong> or <strong>eq</strong>ual to). Ask your professor as to which one is being used where in your given course.</p>
+            </blockquote>
+            <h3 id="identity">Identity</h3>
+            <p>An <strong>identity</strong> in mathematics is just any equality that holds true for all values in a specific domain. For example, a common algebraic identity is <span class="math-inline"><em>a</em> + 0 = <em>a</em></span> for any value of <span class="math-inline"><em>a</em></span>. Another common example is the trigonometric identity <span class="math-inline">sin<sup>2</sup><em>θ</em> + cos<sup>2</sup><em>θ</em> = 1</span>, which is true for all real values of <span class="math-inline"><em>θ</em></span>. An example of an identity that <em>isn’t</em> an identity would be <span class="math-inline"><em>x</em> + <em>y</em> = <em>y</em></span>, which is evidently not true for, say, <span class="math-inline"><em>x</em> = 1</span> and <span class="math-inline"><em>y</em> = 2</span>, as <span class="math-inline">1 + 2 ≠ 2</span>.</p>
+            <p>Recall the definition of set equality. Any set <span class="math-inline"><em>S</em></span> is equal to itself because any set <span class="math-inline"><em>S</em></span> is a subset of itself (every element in <span class="math-inline"><em>S</em></span> is also in <span class="math-inline"><em>S</em></span>).</p>
+            <blockquote>
+            <p>That is, <span class="math-inline"><em>S</em> = <em>S</em></span>. This seems really obvious, and that’s because it is. But you can’t rely on “common sense” when it comes to mathematical intuition. This will come up later in the <a href="#mathematics-as-a-language">logic</a> section, but for now, just keep that in mind.</p>
+            </blockquote>
+            <p>It follows, in the same manner as algebraic properties, that for any sets <span class="math-inline"><em>A</em>, <em>B</em>, <em>C</em></span>: <br /><span class="math-display">if <em>A</em> = <em>B</em> then <em>B</em> = <em>A</em>  (commutativity)</span><br /> <br /><span class="math-display">if <em>A</em> = <em>B</em> and <em>B</em> = <em>C</em>, then <em>A</em> = <em>C</em>  (transitive property)</span><br /> And by combining set membership and the transitive property, we get: <br /><span class="math-display">if <em>A</em> = <em>B</em> and <em>A</em> ∈ <em>C</em>, then <em>B</em> ∈ <em>C</em></span><br /> <br /><span class="math-display">if <em>A</em> = <em>B</em> and <em>C</em> ∈ <em>A</em>, then <em>C</em> ∈ <em>B</em></span><br /></p>
+            <h2 id="set-operations">Set Operations</h2>
+            <h3 id="binary-operations">Binary Operations</h3>
+            <p>Let <span class="math-inline"><em>A</em></span> and <span class="math-inline"><em>B</em></span> be sets. There are three binary (takes in two inputs) operations that can be performed on sets. Anyone who’s ever worked with the Blender boolean modifier will be intimately familiar with this. They are:</p>
+            <ul class="incremental">
+            <li><strong>Union</strong> (<span class="math-inline"><em>A</em> ∪ <em>B</em></span>): produces a set containing all elements in <span class="math-inline"><em>A</em></span> <em>and</em> <span class="math-inline"><em>B</em></span> (or both).</li>
+            <li><strong>Intersection</strong> (<span class="math-inline"><em>A</em> ∩ <em>B</em></span>): produces a set containing all elements in <em>both</em> <span class="math-inline"><em>A</em></span> and <span class="math-inline"><em>B</em></span>.</li>
+            <li><strong>Difference</strong> (<span class="math-inline"><em>A</em> − <em>B</em></span>): produces a set containing all elements in <span class="math-inline"><em>A</em></span> that <em>aren’t</em> in <span class="math-inline"><em>B</em></span>. It then follows that if <span class="math-inline"><em>A</em> ⊆ <em>B</em></span>, then since all elements of <span class="math-inline"><em>A</em></span> are also in <span class="math-inline"><em>B</em></span>, <span class="math-inline"><em>A</em> − <em>B</em> = ⌀</span>.</li>
+            </ul>
+            <p>For example, let <span class="math-inline"><em>A</em> = {1, 2, 3, 4}</span> and <span class="math-inline"><em>B</em> = {2, 4, 6, 8}</span>. Applying all three operations, we get: <br /><span class="math-display"><em>A</em> ∪ <em>B</em> = {1, 2, 3, 4, 6, 8}</span><br /> <br /><span class="math-display"><em>A</em> ∩ <em>B</em> = {2, 4}</span><br /> <br /><span class="math-display"><em>A</em> − <em>B</em> = {1, 3}</span><br /></p>
+            <blockquote>
+            <p>If there are no elements in common between sets <span class="math-inline"><em>A</em></span> and <span class="math-inline"><em>B</em></span> — if <span class="math-inline"><em>A</em> ∩ <em>B</em> = ⌀</span> — then <span class="math-inline"><em>A</em></span> and <span class="math-inline"><em>B</em></span> are called <strong>disjoint sets</strong>.</p>
+            </blockquote>
+            <blockquote>
+            <p>Sometimes the difference operation is notated as <span class="math-inline"><em>A</em> ∖ <em>B</em></span> instead of <span class="math-inline"><em>A</em> − <em>B</em></span>. Ask your professor which is right for you.</p>
+            </blockquote>
+            <h3 id="powerset">Powerset</h3>
+            <p>There are also other set operations, such as the <strong>powerset</strong> operation, which is the set of all possible subsets of a set. Don’t make this a drinking game, the number of “set” utterances in the previous sentence was too much, so let’s break that down.</p>
+            <p>Suppose we have some set <span class="math-inline"><em>S</em></span>. Let’s define a powerset <span class="math-inline">𝒫(<em>S</em>)</span> and imagine it’s a box with nothing in it… yet. Assuming <span class="math-inline"><em>S</em></span> isn’t an empty set — that is, it contains at least one element — the empty set itself <span class="math-inline">(⌀)</span> is a subset of <span class="math-inline"><em>S</em></span>, so we put it in the <span class="math-inline">𝒫(<em>S</em>)</span> box. Also, since we’re not talking about proper subsets, just subsets in general, we can also put the entirety of <span class="math-inline"><em>S</em></span> into the box. From here, we put every other of every possible length subset of <span class="math-inline"><em>S</em></span> into the box. Consider this analogy: if <span class="math-inline"><em>S</em></span> was a candy bowl, what are the different combinations of candy you can take out of the bowl (and yes, taking nothing and taking everything are both counted as “combinations”).</p>
+            <blockquote>
+            <p>Those familiar with combinatorics may point out the particular use of “combination” here, and not “permutation.” This is because, as stated <a href="#what-are-sets">previously</a>, order doesn’t matter.</p>
+            </blockquote>
+            <p>For example, let’s say <span class="math-inline"><em>S</em> = {1, 2, 3}</span>. The powerset (all possible “candy combinations”) is defined as follows: <br /><span class="math-display">𝒫(<em>S</em>) = {{}, {1}, {2}, {3}, {1, 2}, {2, 3}, {1, 3}, {1, 2, 3}}</span><br /> This is also sometimes denoted as <span class="math-inline">2<sup><em>S</em></sup></span>, since the cardinality of the powerset is <span class="math-inline">2<sup>|<em>S</em>|</sup></span>, or in this case, <span class="math-inline">2<sup>3</sup> = 8</span>.</p>
+            <h2 id="special-number-sets">Special Number Sets</h2>
+            <p>Some sets of numbers are so commonly referred to by mathematicians that they have their own names and symbols. The symbols used for these special sets are capital letters (like other sets) but with either bolding (like this: <strong>R</strong>) or the Blackboard Bold typeface (like this: <span class="math-inline">ℝ</span>). For this file, I’ll be using Blackboard Bold because it’s more familiar to me (and slightly easier to handwrite).</p>
+            <p>The most common special sets are:</p>
+            <ul class="incremental">
+            <li>Integers: <span class="math-inline">ℤ = {...,  − 2,  − 1, 0, 1, 2, ...}</span>. Note: it’s “Z” for “<strong>Z</strong>ahlen” (German for “numbers”). English isn’t the only language.</li>
+            <li>Rational numbers: <span class="math-inline">ℚ</span> for any number that can be represented as a fraction of two integers. Don’t ask why this one is “Q” and not “R”, the history gets really messy.</li>
+            <li>Real numbers: <span class="math-inline">ℝ</span> for the real numbers (both rational and irrational).</li>
+            </ul>
+            <blockquote>
+            <p>This one (<span class="math-inline">ℝ</span>) is used most often (until you get to complex analysis), and as such, it can often be assumed that when someone writes <span class="math-inline"><em>x</em></span> with no explicit set membership, that they meant “a real number <span class="math-inline"><em>x</em></span>” or “<span class="math-inline"><em>x</em> ∈ ℝ</span>”. In order to clear up ambiguity during proofs, it is advised you write something to the effect of “<span class="math-inline"><em>x</em> ∈ ℝ</span>” anyway, even if it’s implied by course circumstance.</p>
+            </blockquote>
+            <ul class="incremental">
+            <li>Complex numbers: <span class="math-inline">ℂ</span>. If you’re not doing complex analysis, don’t worry about this one. If you’re doing complex analysis, please worry about this one.</li>
+            </ul>
+            <blockquote>
+            <p>Some textbooks may also list the natural numbers (<span class="math-inline">ℕ</span>) here, but there’s one small issue: it’s not exactly clear what it encompasses, between authors. Some people may define it as “the set of non-negative integers” or <span class="math-inline">ℕ = {0, 1, 2, 3, ...}</span>, but others define it as “the set of positive integers” (excluding zero) or <span class="math-inline">ℕ = {1, 2, 3, ...}</span>. Always ask for clarification if you’re unsure.</p>
+            </blockquote>
+            <p>Sometimes people put superscripts (symbols floating in the top right, like exponents) after the main set letter to further specify the set. This could be plus signs (<span class="math-inline"><sup>+</sup></span>) and minus signs (<span class="math-inline"><sup>−</sup></span>) to indicate positive and negative, respectively; <span class="math-inline">ℤ<sup>−</sup></span> would be the set of negative integers. This could also be inequality symbols; for example, <span class="math-inline">ℝ<sup> ≥ 2</sup></span> would be the set of real numbers greater than or equal to 2.</p>
+            <blockquote>
+            <p>If you use this notation, do not place just a number in the superscript. <span class="math-inline">ℝ<sup> ≥ 2</sup></span> is very different from <span class="math-inline">ℝ<sup>2</sup></span>. Again, ask if you’re unsure. Notation can sometimes be very subjective because humans are fickle and can’t seem to agree on things, even in mathematics.</p>
+            </blockquote>
+            <p>There are, of course, other special sets like <span class="math-inline">𝕎</span>, <span class="math-inline">𝔸</span>, <span class="math-inline">𝕏</span>, and so on, but you need not concern yourself with them at this time. To prevent ambiguity, other special sets will likely be defined as such: <br /><span class="math-display">Let ℙ be the set of [insert something here].</span><br /></p>
+            <h2 id="set-builder-notation">Set-Builder Notation</h2>
+            <h3 id="roster-notation">Roster Notation</h3>
+            <p>The notation for sets we’ve been using up until this point is called “roster notation”, with “roster” being another word for “list”. You can probably see why, you’re just listing all the elements out, or enough to eke out a pattern. But what if there was a way to notate a bunch of numbers (or even infinite) with a common pattern? There is! I mean, you could just write it out using words, like so:</p>
+            <ul class="incremental">
+            <li><span class="math-inline"><em>S</em> = {prime numbers}</span></li>
+            <li><span class="math-inline"><em>S</em> = {integers whose squares are bigger than 42}</span></li>
+            <li><span class="math-inline"><em>S</em> = {real numbers a person can write}</span></li>
+            <li><span class="math-inline">etc.</span></li>
+            </ul>
+            <p>However, this can lead to ambiguity, and isn’t very mathematical. Where are the symbols? See, mathematicians are busy and don’t want to write a lot. The purpose of mathematical language is to be as concise and unambiguous as possible, so we can’t have vagueness like this. What even is “real numbers a person can write”, anyway? I mean, yeah, I guess you could write out a googolplex given enough time, but… why? Why do that to yourself? Why not do something fun like build a set?</p>
+            <h3 id="build-a-set">Build a Set!</h3>
+            <p>Welcome to Build-a-Set workshop, where I kind of lied about this being fun. But it is important. <strong>Set-builder notation</strong> is a method of notating sets by stating the property (or properties) each element has in common. There are three (questionably four) main parts to set-builder notation:</p>
+            <ol class="incremental" type="1">
+            <li>The <strong>variable</strong> (usually <span class="math-inline"><em>x</em></span>), which can have any value in</li>
+            <li>The <strong>domain</strong> (this is the questionable one). The domain is just the set of values that <span class="math-inline"><em>x</em></span> could be, usually one of the <a href="#special-number-sets">special sets</a> like <span class="math-inline">ℝ</span> or <span class="math-inline">ℤ</span>, or something. As noted in that section, in real analysis (as in “real numbers” not “real or fake”), it can be taken that <span class="math-inline"><em>x</em> ∈ ℝ</span> unless otherwise stated, but it’s good practice to write it anyway.</li>
+            <li>The <strong>separator</strong>, which is either <span class="math-inline">|</span> or <span class="math-inline">:</span>, depending on who’s teaching. This is read as “such that” (often abbreviated to “s.t.”) or “for which”.</li>
+            <li>The <strong>predicate</strong> (or the <em>rule</em>), which is the thing that needs to be true for all <span class="math-inline"><em>x</em></span> in the set. This is often notated as <span class="math-inline"><em>Φ</em>(<em>x</em>)</span> (the Greek letter phi). The predicate can be made up of multiple conditions, but it just called “the predicate” in the singular.</li>
+            </ol>
+            <p>Let’s look at an example. Define a set <span class="math-inline"><em>S</em></span> as the following: <br /><span class="math-display"><em>S</em> = {<em>x</em> ∈ ℤ : <em>x</em><sup>2</sup> &gt; 42}</span><br /> In plain English, this is read as “the set of all <span class="math-inline"><em>x</em></span> that are integers such that the square of <span class="math-inline"><em>x</em></span> is greater than 42.” Breaking this down into the four aforementioned parts, we get:</p>
+            <ul class="incremental">
+            <li><span class="math-inline"><em>S</em> = {...}</span> “The set of”</li>
+            <li><span class="math-inline"><em>x</em></span> “all (values of) <span class="math-inline"><em>x</em></span>…” (part 1)</li>
+            <li><span class="math-inline"> ∈ ℤ</span> “… that are integers” (part 2)</li>
+            <li><span class="math-inline">:</span> “such that” (part 3)</li>
+            <li><span class="math-inline"><em>x</em><sup>2</sup> &gt; 42</span> “the square of <span class="math-inline"><em>x</em></span> is greater than 42” (part 4)</li>
+            </ul>
+            <p>Sometimes the predicate just has English words in it because people can’t agree on what notation to use. For instance, what do you think this means?: <br /><span class="math-display"><em>A</em> = {<em>x</em> : <em>x</em> ∈ ℝ and <em>x</em> is prime}</span><br /></p>
+            <p>…</p>
+            <p>Yes, it’s the set of all real prime numbers (which is a tiny bit redundant because prime numbers are defined to be real numbers, but that’s besides the point). Notice that the domain can come after the separator, as along as it’s conjoined to the predicate by the word “and” or <a href="#logical-connectives">symbolic equivalent</a>. What about this one?: <br /><span class="math-display"><em>B</em> = {<em>x</em> ∈ ℚ :  − 1 ≤ <em>x</em> ≤ 3 or <em>x</em><sup>2</sup> = 4}</span><br /></p>
+            <p>…</p>
+            <p>This is the set of all rationals between -1 and 3 (including both -1 and 3) and also -2 (because of the second condition). If you didn’t get that right away, don’t worry, you get better with practice. Note that the predicate here is the <em>entire expression</em> “<span class="math-inline"> − 1 ≤ <em>x</em> ≤ 3 or <em>x</em><sup>2</sup> = 4</span>”, which includes both conditions. If it helps, you can think of the predicate as a list of requirements to obtain membership into the set. Elements that meet these requirements are allowed in, but elements that don’t, aren’t. With the above example, <span class="math-inline"> − 2</span> is allowed in because of the word “or” (“meet req. 1 or req. 2, I don’t care which”). If it had instead said “and” (both requirements need to be met to “gain entry”), <span class="math-inline"> − 2</span> isn’t between -1 and 3, and thus wouldn’t be in the set (not “allowed in”).</p>
+            <p>This wouldn’t be much of a workshop if I didn’t allow you to make your own sets, though, would it? Here are a few exercises to try. I’ll put some <a href="#build-a-set-solutions">solutions</a> at the end of the file. There are, of course, multiple ways to complete these, so don’t be put out if your solutions don’t match the ones I’ve given.</p>
+            <ol class="incremental" type="1">
+            <li>Define a set <span class="math-inline"><em>S</em></span> of all negative even numbers.</li>
+            <li>Define a set <span class="math-inline"><em>S</em></span> of all prime numbers greater than 2.</li>
+            <li>Define a set <span class="math-inline"><em>A</em></span> for all rational numbers <span class="math-inline"><em>x</em></span> such that <span class="math-inline">cos <em>x</em></span> is an integer.</li>
+            <li>Suppose <span class="math-inline"><em>f</em>(<em>x</em>) = <em>x</em><sup>2</sup> + 1</span>. Define a set <span class="math-inline"><em>B</em></span> of all real number inputs to <span class="math-inline"><em>f</em>(<em>x</em>)</span> that result in a real number less than or equal to 0. What’s the cardinality of this set?</li>
+            </ol>
+            <h3 id="interval-notation">Interval Notation</h3>
+            <p>This part isn’t really part of set-builder notation, but it’s important to know anyway. The notation in this part is consistent, but may overlap with other branches of mathematics, so try not to get confused.</p>
+            <p><strong>Intervals</strong> are continuous sets of real numbers between two endpoints. “Continuous” here meaning there are no numbers missing between the two endpoints. They’re all in there. There are three primary types of intervals, which given any real numbers <span class="math-inline"><em>a</em></span> and <span class="math-inline"><em>b</em></span>, include:</p>
+            <ul class="incremental">
+            <li><strong>Open intervals</strong>, denoted <span class="math-inline">(<em>a</em>, <em>b</em>)</span>, which are equivalent to <span class="math-inline">{<em>x</em> : <em>a</em> &lt; <em>x</em> &lt; <em>b</em>}</span></li>
+            <li><strong>Closed intervals</strong>, denoted <span class="math-inline">[<em>a</em>, <em>b</em>]</span>, which are equivalent to <span class="math-inline">{<em>x</em> : <em>a</em> ≤ <em>x</em> ≤ <em>b</em>}</span></li>
+            <li><strong>Half-open intervals</strong>, denoted as either:
+            <ul class="incremental">
+            <li><span class="math-inline">[<em>a</em>, <em>b</em>) = {<em>x</em> : <em>a</em> ≤ <em>x</em> &lt; <em>b</em>}</span></li>
+            <li><span class="math-inline">(<em>a</em>, <em>b</em>] = {<em>x</em> : <em>a</em> &lt; <em>x</em> ≤ <em>b</em>}</span></li>
+            </ul></li>
+            </ul>
+            <p>In other words, open intervals <em>exclude</em> both endpoints, closed intervals <em>include</em> both endpoints, and half-open intervals include one endpoint but excludes the other.</p>
+            <blockquote>
+            <p>Don’t ask whether the interval is “half-open” or “half-closed”; they mean the same thing.</p>
+            </blockquote>
+            <p>Intervals can also have infinity and negative infinity as possible endpoints, but since infinity isn’t a number (you can never actually <em>reach</em> infinity, no matter how hard you try), that endpoint is automatically denoted as open. Given any real number <span class="math-inline"><em>c</em></span>, we get the following equivalences:</p>
+            <ul class="incremental">
+            <li><span class="math-inline">[<em>c</em>, ∞) = {<em>x</em> : <em>c</em> ≤ <em>x</em>}</span></li>
+            <li><span class="math-inline">(<em>c</em>, ∞) = {<em>x</em> : <em>c</em> &lt; <em>x</em>}</span></li>
+            <li><span class="math-inline">( − ∞, <em>c</em>] = {<em>x</em> : <em>x</em> ≤ <em>c</em>}</span></li>
+            <li><span class="math-inline">( − ∞, <em>c</em>) = {<em>x</em> : <em>x</em> &lt; <em>c</em>}</span></li>
+            <li><span class="math-inline">( − ∞, ∞) = {<em>x</em> : <em>x</em> ∈ ℝ} = ℝ</span></li>
+            </ul>
+            <p>Since intervals are sets, set membership still applies. And since set membership applies, you can put intervals into set-builder notation. Let’s say you wanted to define a set <span class="math-inline"><em>S</em></span> where every real number <span class="math-inline"><em>x</em></span> has to either be between -1 and 3 (inclusive) or its square equals 16. How would you write this?</p>
+            <p>…</p>
+            <p>Here’s a possible solution: <br /><span class="math-display"><em>S</em> = {<em>x</em> ∈ ℝ : <em>x</em> ∈ [ − 1, 3] or <em>x</em><sup>2</sup> = 16}</span><br /> This is, of course, equivalent to: <br /><span class="math-display"><em>S</em> = {<em>x</em> ∈ ℝ :  − 1 ≤ <em>x</em> ≤ 3 or <em>x</em><sup>2</sup> = 16}</span><br /></p>
+            <blockquote>
+            <p>A common interval that’ll probably come up a bunch is the <strong>unit interval</strong> <span class="math-inline">[0, 1]</span>, or the closed interval between 0 and 1. This is sometimes denoted by the capital letter “<span class="math-inline"><em>I</em></span>”.</p>
+            </blockquote>
+            <p>Let’s try building some intervals, shall we? Only read the <a href="#interval-notation-solutions">solutions</a> after you’ve tried the exercises. Write an interval for each of the following statements: 1. The set of real numbers between 1 and 2, including 1 and 2. 2. The set of real numbers that are less than or equal to 5, but greater than 0. 3. The set of non-positive real numbers. 4. The set of negative real numbers greater than -2.</p>
+            <h1 id="symbolic-logic">Symbolic Logic</h1>
+            <h2 id="what-is-logic">What is Logic?</h2>
+            <p><strong>Mathematical logic</strong> is the study of truths and arguments within mathematics. Now, “argument” is used to mean a series of statements to determine a conclusion. This is particularly useful in proofs; you need to justify how to get from point A to point B, and arguments are used here. If we’re not careful, this is going to become very philosophical, very quickly.</p>
+            <p>Mathematical arguments can also be seen as “reasoning”, as in, “Why is this statement true or false? What is the reasoning behind this?” Consider this statement: <br /><span class="math-display">$$\sqrt{2}\text{ is a rational number.}$$</span><br /> In other words, “<span class="math-inline">$\sqrt{2}$</span> can be written as a fraction of two integers.” Is this true?</p>
+            <p>…</p>
+            <p>No, no it’s not. But why isn’t that true? In mathematics, you don’t just go “yep, that’s true” without doing anything else about it. If it’s useful information, it has to be proved to be true. In order to prove something, your arguments need to be watertight; leaving no room for ambiguity. It also has to make basic sense (like in the common use of “logic”), that is, you can’t just jump from “dolphins are mammals” to “therefore pigs can fly”. Everything mentioned in a proof or argument needs to logically follow on from each other or given to you as additional information.</p>
+            <h2 id="mathematics-as-a-language">Mathematics as a Language</h2>
+            <h3 id="the-issue-of-ambiguity">The Issue of Ambiguity</h3>
+            <p>Mathematics is a language. Admittedly, a language of strange-looking symbols, but if you think about it, all written languages are like that. Now, as you’re probably tired of hearing, mathematical language is used to prevent ambiguity. But what does this actually mean? Let’s think about English language statements for a second. Consider the following: <br /><span class="math-display">The boy hit the girl with an apple.</span><br /> Now, here’s the question. Who has the apple? On the one hand, the girl (who has an apple) is being hit by the boy: <br /><span class="math-display">(The boy) hit (the girl with an apple).</span><br /> But on the other hand, the boy has an apple, and he’s using that to hit the girl: <br /><span class="math-display">(The boy) (hit (with an apple) * ) the girl.</span><br /> Without clear context, both interpretations could be true.</p>
+            <blockquote>
+            <p>Note: there are actual ways to map this out in a semantically coherent way, but since this isn’t linguistics class, I’m using parentheses here just to clear up what belongs where in the subject-verb-object sentence format.</p>
+            </blockquote>
+            <p>Language like this contains ambiguity, stuff that can be misinterpreted and misunderstood. Logic is designed to be precise and unambiguous. Mathematics, and things like logical constructed languages build on what is known as <strong>predicate logic</strong>, which is used to reason with objects, properties of objects, and relationships between objects.</p>
+            <blockquote>
+            <p>A mathematical object is an abstract concept, so don’t worry too much about what it is in exact terms. Mathematical objects include things like numbers, functions, sets, expressions, etc. Anything further than that is a bit too philosophical for the scope of this file.</p>
+            </blockquote>
+            <h3 id="propositions">Propositions</h3>
+            <p>A key building block of language of predicate logic is propositions. This is going to be a little difficult to explain. Consider the following English sentence: “Cats meow.” This carries with it the proposition that “cats” do an action called “meow”. The meaning of the sentence is the proposition, not the words themselves.</p>
+            <p>Consider this next sentence: “deux plus deux font cinq”. This is French, and it denotes the same proposition as the English sentence “two plus two is five”, despite using completely different words and letters. Also, note that the proposition is not true. A proposition is a statement or idea that needs to have some truth value (true or false), but the words used are <em>not</em> the proposition itself, the meaning is. The following statements all represent propositions:</p>
+            <ul class="incremental">
+            <li><span class="math-inline">Mars is blue.</span></li>
+            <li><span class="math-inline">A lime is a fruit.</span></li>
+            <li><span class="math-inline">Humans are animals.</span></li>
+            <li><span class="math-inline">A cucumber is a vegetable.</span></li>
+            <li><span class="math-inline">1 is a prime number.</span></li>
+            </ul>
+            <p>The following sentences are <em>not</em> propositions, because they aren’t statements (and as such, don’t carry a truth value):</p>
+            <ul class="incremental">
+            <li><span class="math-inline">Go home.</span></li>
+            <li><span class="math-inline">Who are you?</span></li>
+            <li><span class="math-inline">What is a cat?</span></li>
+            <li><span class="math-inline">Don’t divide by zero!</span></li>
+            </ul>
+            <p>Propositions are usually represented in predicate logic with capital letters called “predicate variables”. These are usually “<span class="math-inline"><em>P</em></span>”, “<span class="math-inline"><em>Q</em></span>”, and “<span class="math-inline"><em>R</em></span>”. Propositions, alongside logical connectives and quantifiers, can be put together to create <em>formulas</em>. Don’t confuse these with algebraic formulas, they’re different.</p>
+            <blockquote>
+            <p>Strictly speaking, a formula can technically consist of only a single proposition. If the formula is, say, “<span class="math-inline"><em>P</em></span>”, this is read as “<span class="math-inline"><em>P</em></span> is true”.</p>
+            </blockquote>
+            <p>If it helps, just think of propositions like algebraic variables, except instead of the letter representing a number, it instead represents a state of either true or false.</p>
+            <h3 id="logical-connectives">Logical Connectives</h3>
+            <p>Now that we have our variables, we need our operators. Here come the logical operators, or logical connectives. As the name suggests, it’s used to connect formulas together, and as previously noted, predicate variables can be formulas on their own.</p>
+            <p>There are five primary types of logical connectives. Given any predicate variables <span class="math-inline"><em>P</em></span> and <span class="math-inline"><em>Q</em></span>:</p>
+            <ul class="incremental">
+            <li>Conjunction / AND: “<span class="math-inline"><em>P</em> ∧ <em>Q</em></span>” is true only if both <span class="math-inline"><em>P</em></span> and <span class="math-inline"><em>Q</em></span> are true.</li>
+            <li>Disjunction / OR: “<span class="math-inline"><em>P</em> ∨ <em>Q</em></span>” is true only if either <span class="math-inline"><em>P</em></span> or <span class="math-inline"><em>Q</em></span> is true.</li>
+            <li>Negation / NOT: “<span class="math-inline">¬<em>P</em></span>” is true if <span class="math-inline"><em>P</em></span> is false, and vice versa.</li>
+            <li>Implication: “<span class="math-inline"><em>P</em> ⟹ <em>Q</em></span>” is read as “if P is true, then Q is true”. It can never be the case that <span class="math-inline"><em>Q</em></span> is false if <span class="math-inline"><em>P</em></span> is true.</li>
+            </ul>
+            <h3 id="quantifiers">Quantifiers</h3>
+            <h1 id="zfc">ZFC</h1>
+            <blockquote>
+            <p>How did we get here?</p>
+            </blockquote>
+            <h1 id="exercise-solutions">Exercise Solutions</h1>
+            <h2 id="build-a-set-solutions">Build-A-Set Solutions</h2>
+            <p>Note that these are <em>possible</em> solutions, not necessarily the only ones.</p>
+            <ol class="incremental" type="1">
+            <li><span class="math-inline"><em>S</em> = {<em>x</em> ∈ ℤ : <em>x</em> &lt; 0 and ( − 1)<sup><em>x</em></sup> = 1}</span></li>
+            <li><span class="math-inline"><em>S</em> = {<em>x</em> ∈ ℝ : <em>x</em> is prime and <em>x</em> &gt; 2}</span></li>
+            <li><span class="math-inline"><em>A</em> = {<em>x</em> ∈ ℚ : cos <em>x</em> ∈ ℤ}</span></li>
+            <li><span class="math-inline"><em>B</em> = {<em>x</em> ∈ ℝ : <em>f</em>(<em>x</em>) ∈ ℝ and <em>f</em>(<em>x</em>) ≤ 0}, |<em>B</em>| = 0</span> (with respect to the real numbers, <span class="math-inline"><em>x</em><sup>2</sup> + 1</span> can never be negative or zero, so <span class="math-inline"><em>B</em></span> is an empty set)</li>
+            </ol>
+            <blockquote>
+            <p>Usually a question like the 4th would have notation like this: <span class="math-inline"><em>f</em> : ℝ → ℝ</span>. This just means that the function <span class="math-inline"><em>f</em></span> takes in a real number (the left side of the arrow) and outputs a real number (the right side of the arrow). If, instead, the function had notation like this: <span class="math-inline"><em>g</em> : ℝ → ℤ</span>, this means the function <span class="math-inline"><em>g</em></span> takes in real number inputs, but outputs integers. Basically: <br /><span class="math-display">function : input set → output set</span><br /> If this notation is provided, both <span class="math-inline"><em>x</em> ∈ ℝ</span> and <span class="math-inline"><em>f</em>(<em>x</em>) ∈ ℝ</span> can be inferred, and thus, don’t need to be written. So: <br /><span class="math-display">given <em>f</em> : ℝ → ℝ,</span><br /> <br /><span class="math-display">let set <em>B</em> = {<em>x</em> : <em>f</em>(<em>x</em>) ≤ 0}</span><br /></p>
+            </blockquote>
+            <h2 id="interval-notation-solutions">Interval Notation Solutions</h2>
+            <ol class="incremental" type="1">
+            <li>The closed interval <span class="math-inline">[1, 2]</span>.</li>
+            <li>The half-open interval <span class="math-inline">(0, 5]</span>.</li>
+            <li>Note that “non-positive” includes 0, because it’s neither negative nor positive: <span class="math-inline">( − ∞, 0]</span>.</li>
+            <li>Note that “negative” means “less than 0”: <span class="math-inline">( − 2, 0)</span>.</li>
+            </ol>
+            </div>
     </body>
 </html>
