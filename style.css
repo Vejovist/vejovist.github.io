@@ -1,0 +1,91 @@
+/* Off animation */
+@keyframes off {
+    0% {background-color: #221f25;}
+    17% {background-color: #221f25;}
+    33% {background-color: #28242c;}
+    50% {background-color: #28242c;}
+    66% {background-color: #28242c;}
+    83% {background-color: #221f25;}
+    100% {background-color: #221f25;}
+}
+  
+@keyframes current {
+    0% {color: black; background-color: #26d1ba;}
+    12.5% {color: white; background-color: #20659e;}
+    25% {color: white; background-color: #6e3daf;}
+    37.5% {color: black; background-color: #fa4da4;}
+    50% {color: black; background-color: #fc7777;}
+    62.5% {color: white; background-color: #e69525;}
+    75% {color: black; background-color: #adf723;}
+    87.5% {color: black; background-color: #23f76d;}
+    100% {color: black; background-color: #26d1ba;}
+}
+  
+/* Appearance animation */
+@keyframes appear {
+    0% {display: inline;}
+    100% {display: inline;}
+}
+  
+/* The side navigation menu */
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 10%;
+    background-color: #85858a;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+  
+/* Sidebar links */
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+}
+  
+/* Active/current link */
+.sidebar .active {
+    background-color: #26d1ba;
+    color: white;
+    animation-name: current;
+    animation-duration: 32s;
+    animation-iteration-count: infinite;
+}
+  
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+    background-color: #221f25;
+    color: white;
+    animation-name: off;
+    animation-duration: 60s;
+    animation-iteration-count: infinite;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+.content {
+    margin-left: 10%;
+    padding: 1px 16px;
+    height: auto;
+    width: 85%;
+    background-color: #1f2424;
+    color: #d1e0e0;
+  }
+
+body {
+    background-color: #1f2424;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-decoration: solid underline #d1e0e0 2px;
+}
+
+h2 {
+    text-decoration: underline #d1e0e0;
+}
+
+h3 {
+    text-decoration: dotted underline #c3cfd4d7;
+}

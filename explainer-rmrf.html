@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Intro to rm -rf</title>
+        <link href="style.css" rel="stylesheet" type="text/css" media="all">
+        <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    </head>
+    <body>
+        <!-- The sidebar -->
+        <div class="sidebar">
+            <a href="index.html">Home</a>
+            <a class="active" href="explainer-rmrf.html">Explainer: rm -rf</a>
+            <a href="explainer-symlogic.html">Explainer: Sets and Logic</a>
+            <a href="">Dummy Link</a>
+        </div>
+        <div class="content">
+            <p>
+                <md-block>
+                    # Introduction to rm -rf
+                    ## What is `rm`?
+                    This is shell scripting. Basically how you interact with the computer a little more directly in Unix or Unix-like systems. The actual command in question is `rm` which stands for "**r**e**m**ove". As the name suggests, it's used to remove files. This is similar to `rmdir`, which is used to "**r**e**m**ove (empty) **dir**ectories". To remove a file called "myfile.txt", navigate to the directory the file is in (using `cd`, probably) and type `rm myfile.txt`. Generally, the template for removing files is `rm [flags] [file]`.
+
+                    ## What are flags?
+                    Directly after commands in shell scripting, you can specify things called "flags". Flags are basically options, with some being boolean (true/false) and some you can pass a value into. For those familiar with Minecraft commands, this is similar to the parameters given in square brackets after an entity selector, e.g. `@e[distance=1]`. In shell scripting, short flags specified using a dash "-" followed by a character, usually a letter. There are also things called "long flags," but that's not important here. Multiple flags can be used after a command, as long as they're separated by spaces, e.g. `echo -n -e "Hello, world!"`. Since short flags are really just one character, they can be bunched together after the dash, as long as they don't have parameters (passed values). As such, `cowsay -dw "moo"` is the same as `cowsay -d -w "moo"`.
+
+                    More to the point of `rm`, two flags are used here: `-r` and `-f`.
+
+                    ### What is `-r`?
+                    First, `-r` is used to **r**ecursively remove files from a directory, if the file specified was a directory. Directories are files, don't worry about it. If you're wondering what "recursively" means here, it means that it deletes from the inside out. That is, it goes into the furthest directory in, deletes all the files in there, then deletes the empty directory, and then repeats those two steps until the parent directory (the one specified) is deleted. For example, consider the directory "alice". It has a single folder inside it called "bob", which contains a text file "c.txt". That is, the deepest file path is "alice/bob/cat.txt". Here's what happens when you call `rm -r alice`:
+                    - "alice" has the non-empty directory "bob", so go in there
+                    - "bob" contains file "cat.txt", so delete it
+                    - "bob" contains no other files, return to "alice"
+                    - "bob" is now an empty directory, so delete it
+                    - "alice" has no other files to delete, return to top
+                    - "alice" is now an empty directory, so delete it
+
+                    This is an oversimplification, but hopefully this helps in understanding.
+
+                    ### What is `-f`?
+                    Now, it's time for `-f`. It stands for "**f**orce" and it basically deletes files by brute force. Files have different "permissions"; things you are and aren't allowed to do with them. There are three primary types in Unix systems:
+                    - Read (r): you can read (or at least, view) the contents
+                    - Write (w): you can modify the contents
+                    - Execute (x): you can run the file like a program
+                    Most files easily accessible by the user have both read and write permissions, and this is also why sometimes you need to select "Allow launching file as program" when downloading Steam games; it gives the file the execute permission. However, a lot of files on the system are read-only, basically to prevent the user from screwing something up horribly with their computer. Attempting to remove these sorts of files with `rm` (or really, any files with which the user doesn't have write permission) prompts the user with a yes/no text prompt. Typing "y" for yes deletes the file, typing anything else does nothing. This is fine for a few files, but becomes an issue when multiple files need to be deleted. This is where `-f` comes in. It forcefully bypasses the prompt and doesn't show an error if the file doesn't exist.
+
+                    ## Why is `rm -rf` dangerous?
+                    Combining these two flags with "rm", therefore, is basically the nuclear option when it comes to removing files. But, there's one last thing that's missing that makes this really fatal for your computer. Look at this command and tell me (based on the template I provided earlier) what's missing: `rm -rf`.
+
+                    That's right, a file or directory. Strictly speaking, `rm -rf` isn't dangerous on its own if you know the contents of all the files and directories you're deleting, like in the "alice/bob" example. But, if you were to, I don't know, specify the root directory of your entire computer... then you might be in trouble were you to hit ENTER. This is surprisingly easy to do, and that's why I'm not describing how to do it here. It's not like the information's difficult to find, it's that you shouldn't do it. Removing files like this is not the same as moving something to the rubbish bin. There's no "Ctrl-Z" or "easy to undo" solution. This is permanent deletion. If you do this, you will kill your system. Are there ways to recover your files? Yes, but only through advanced recovery methods, and even then, there's no guarantee that anything will actually be recovered.
+
+                    ## Are there any safeguards?
+                    So, I've dug us both into a very deep, depressing hole. Are there any safeguards against this? Yes, actually. Common practice (generally) is to not use `rm -rf` in shell scripts unless absolutely necessary, since this kind of nuclear system-ending thing can happen on accident, especially on older systems. Also, always make copies! Other than that, some operating systems prevent this sort of command from being run, like Solaris 10, BSD, and GNU. Some other technical things:
+                    * `--preserve-root` is a long flag (remember when I mentioned those?) that makes sure the root directory of your computer isn't deleted. This is toggled on by default in the "coreutils" package in versions post-2014-ish, so you shouldn't need to worry about it, but check anyway. If you have a Unix-like system, you don't need to install this package, it is already in your system.
+                    * Sanity-checking code (making sure everything runs as intended) is always a good practice, not just with this.
+                    * You could also install `safe-rm` which overrides the normal `rm` command and prevents protected files (the ones that keep your computer functioning) from being deleted, skipping over them instead.
+
+                    This was an absolute text-dump. I hope at least some part of this was interesting and/or informative. Thank you for coming to my TED Talk.
+                </md-block>
+                <br><br><br>
+            </p>
+        </div>
+    </body>
+</html>

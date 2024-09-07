@@ -1,0 +1,270 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Intro to Set Theory and Symbolic Logic</title>
+        <link href="style.css" rel="stylesheet" type="text/css" media="all">
+        <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    </head>
+    <body>
+        <!-- The sidebar -->
+        <div class="sidebar">
+            <a href="index.html">Home</a>
+            <a href="explainer-rmrf.html">Explainer: rm -rf</a>
+            <a class="active" href="explainer-symlogic.html">Explainer: Sets and Logic</a>
+            <a href="">Dummy Link</a>
+        </div>
+        <div class="content">
+            <p>
+                <md-block>
+                    # Introduction to Set Theory and Symbolic Logic
+                    # Table of Contents
+                    * [Preface](#preface)
+                    * [Basic Set Theory](#basic-set-theory)
+                        * [What are sets?](#what-are-sets)
+                        * [Properties of Sets](#properties-of-sets)
+                            * [Set Membership](#set-membership)
+                            * [Cardinality and Infinite Sets](#cardinality-and-infinite-sets)
+                            * [Subsets and Proper Subsets](#subsets-and-proper-subsets)
+                            * [Identity](#identity)
+                        * [Set Operations](#set-operations)
+                            * [Binary Operations](#binary-operations)
+                            * [Powerset](#powerset)
+                        * [Special Number Sets](#special-number-sets)
+                        * [Set-Builder Notation](#set-builder-notation)
+                            * [Roster Notation](#roster-notation)
+                            * [Build a Set!](#build-a-set)
+                            * [Interval Notation](#interval-notation)
+                    * [Symbolic Logic](#symbolic-logic)
+                        * [Mathematics as a Language](#mathematics-as-a-language)
+                            * [The Issue of Ambiguity](#the-issue-of-ambiguity)
+                            * [Propositions](#propositions)
+                            * [Logical Connectives](#logical-connectives)
+                            * [Quantifiers](#quantifiers)
+
+
+                    # Preface
+                    This is not a substitute for an actual course in set theory and symbolic logic, but a fun little explainer with (hopefully) useful information for other branches and fields such as calculus and computing.
+
+                    All information in this file has been sourced from:
+                    * old lecture notes
+                    * old notes from [this](https://www.coursera.org/learn/mathematical-thinking) online course (and corresponding book by Keith Devlin)
+                    * Hrbacek, Karel, and Thomas Jech. *Introduction to Set Theory*. 3rd ed., CRC Press, 1999. 
+                        * (but just a little bit)
+
+                    # Basic Set Theory
+                    ## What are sets?
+                    A **set** is a grouping of some collection of unique items. You could have a set of numbers, a set of symbols, a set of names on a watchlist, etc. What's most notable about sets, however, is that they are not physical groupings. A stack of bricks on a Lego tower is not a set, nor are the beads in a bracelet, or an assortment of apples at the country fair. 
+
+                    Most of the time in mathematics, we deal with sets of numbers, variables, functions, or other sets. For the sake of simplicity, we'll just deal with sets of numbers in this file. This can be notated by curly braces, with each item (or *element* or *member*) separated by commas. For example, let's say we have a set $S$.
+                    > It should be noted that &mdash; similar to variables &mdash; sets can be referred to by any capital letter, but $S$ is often chosen out of convenience.
+
+                    This is an example of a valid set:
+                    $$S = \{2, 3, 5, 7, 11\}$$
+                    Sets are formed based only on what elements are actually in them, meaning order doesn't matter and only one instance of each element actually "counts" so to speak. In other words, $\{1, 2, 3\} = \{3, 1, 2\}$ because doesn't matter, and the badly formed set $\{2, 7, 0, 2\}$ is the same as $\{7, 0, 2\}$; it doesn't matter (or even really make sense) to ask "which $2$", rather, it's more important that the $2$ is there at all.
+                    > Oh, and also sets can have no elements in them. This is referred to as the "empty set" or "null set" and is written like $\{\}$, or sometimes $\varnothing$.
+                    ## Properties of Sets
+                    ### Set Membership
+                    Since the most important aspect of sets is whether something is or isn't inside of one, mathematicians being mathematicians came up with symbols for that. If we take $x$ to be a variable, and $S$ to be a set, then the expression $x \in S$ means any of the following (they're all equivalent, pick your favourite):
+                    * $x$ is an **element** of $S$
+                    * $x$ is a **member** of $S$
+                    * $x$ **belongs** to $S$
+                    * $x$ is **in** $S$
+
+                    Similarly, $x \notin S$ is the negation of $x \in S$, that is:
+                    * $x$ is not an element of $S$
+                    * $x$ is not a member of $S$
+                    * $x$ does not belong to $S$
+                    * $x$ is not in $S$
+
+                    To use a more concrete example, take $S = \{2, 3, 5, 7, 11\}$ from earlier. We can say (from looking at it, this is a simple example) that $2$ is in $S$, but $9$ isn't. Or, in mathematical notation:
+                    $$2 \in S$$
+                    $$9 \notin S$$
+                    > To draw this symbol ($\in$) for proofs, draw a "C" with a line through it. Try not to draw the line past the left side of the "C". Do not draw a capital "E", as it may get confusing later. 
+
+                    ### Cardinality and Infinite Sets
+                    Cardinality is the number of elements in a set. This can also be called the *size* of a set. As noted earlier, sets can have a "size" of 0 and they can have finite elements, but they can also have infinite elements.
+
+                    The size of a set is denoted by a vertical line on both sides of the set letter. For example, define a set $A = \{-1, 2, 4\}$. If you count the number of elements, you get 3, so this is written:
+                    $$|A| = 3$$
+                    For those familiar with absolute value, this is the exact same notation, please don't get confused. <br> For those unfamiliar with absolute value, look it up.
+
+                    Just kidding. Essentially, the absolute value function does nothing with positive inputs (and 0), but turns negatives inputs into their positive counterparts. $|3| = 3$, $|0| = 0$, $|-5| = 5$, etc. Again, please don't get confused.
+                    > If you see curly braces or a big capital letter, it's probably cardinality (size), but if it's just a number or lowercase letter, it's probably absolute value.
+
+                    If a set has infinite elements, some people may denote this as $|S| = \infty$, but the usage of infinity here is a little too generalized, and doesn't take into account that "some infinities are greater than other infinities" (which is beyond the scope of this). Ellipses can be used when the elements follow a clear pattern. For example, the finite set of all integers from 1 to 216000 could be written by hand (although I think your hand would hurt), but is more easily written like so:
+                    $$S = \{1, 2, 3, ..., 215999, 216000\}$$
+                    Similarly, the infinite set of integers greater than or equal to 3 can be written like:
+                    $$A = \{3, 4, 5, ...\}$$
+                    And the infinite set of all integers less than 2 can be written:
+                    $$B = \{..., -2, -1, 0, 1\}$$
+                    > Include as many elements as you need to make the pattern clear. This may differ between person to person. If only there was a better way... [Foreshadowing is a literary device in whi&mdash;](#set-builder-notation)
+
+                    ### Subsets and Proper Subsets
+                    Define two sets $A$ and $B$. If every element in $A$ is also in $B$, we say that "$A$ is a subset of $B$". Note that this may not be true the other way around. If every element in $A$ is also in $B$, there *could* be other elements in $B$ that aren't in $A$.
+
+                    For example, let's say $A = \{1, 2\}$ and $B = \{3, 2, 1\}$. By inspection (a fancy word for "looking at it"), all elements in $A$ are clearly in $B$, so $A$ is a **subset** of $B$.
+
+                    As another example, let's say $A = \{3, 0\}$ and $B = \{0, 3\}$. As you can see, every element in $A$ is in $B$, so $A$ is a subset of $B$. But also, every element in $B$ is in $A$, so $B$ is a a subset of $A$. If both of these statements are true, it must be because both $A$ and $B$ contain the exact same elements, so they must be equal.
+
+                    > This is the definition of set equality! $A = B$ *if and only if* $A$ is a subset of $B$ *and* $B$ is a subset of $A$. See [logical connectives](#logical-connectives) for more information.
+
+                    Another term that might come up is "proper subset." A set $A$ is a **proper subset** of $B$ if $A$ is a subset of $B$, but $A\neq B$. Or in other words, every element of $A$ is in $B$, but $B$ contains elements (at least one) that aren't in $A$. For an example of this, look at the first example in this section. 
+
+                    You may have noticed that I refrained from introducing any new symbols up to this point (in this section, anyway). Why is that? Okay... here's the deal. I'll show some notational examples here using the notation that *I* was taught. This is by no means universal. Read the note at the end of this section for more information.
+
+                    $$\text{Let } A, B \text{ be sets.}$$
+                    Subset example:
+                    $$\text{If } A = \{1, 2, 3\} \text{ and } B = \{5, 3, 4, 2, 1\} \text{ then } A \subseteq B$$
+                    Set equality example:
+                    $$\text{If } A = \{-2, 0.5\} \text{ and } B = \{0.5, -2\} \text{ then } A \subseteq B \text{ and } B \subseteq A \text{, so } A = B$$
+                    Proper subset example:
+                    $$\text{If } A = \{1\} \text{ and } B = \{1, 2, 3, 4\} \text{ then } A \subseteq B \text{ and } A \neq B \text{, so } A \subset B$$
+
+
+                    > The notation is this section doesn't have a clear consensus. Some authors use "$\subset$" to refer to subsets and "$\subseteq$" to refer to strict subsets, while others use "$\subseteq$" as a parallel to $\leq$; less than *or equal to*. $\LaTeX$, the typesetting system I and a lot of actual mathematicians use, has laid its finger on the scale by assigning "$\subseteq$" with the name "subseteq" (**subset** or **eq**ual to). Ask your professor as to which one is being used where in your given course.
+
+                    ### Identity
+                    An **identity** in mathematics is just any equality that holds true for all values in a specific domain. For example, a common algebraic identity is $a + 0 = a$ for any value of $a$. Another common example is the trigonometric identity $\sin^2{\theta} + \cos^2{\theta} = 1$, which is true for all real values of $\theta$. An example of an identity that *isn't* an identity would be $x + y = y$, which is evidently not true for, say, $x = 1$ and $y = 2$, as $1 + 2 \neq 2$.
+
+                    Recall the definition of set equality. Any set $S$ is equal to itself because any set $S$ is a subset of itself (every element in $S$ is also in $S$).
+                    > That is, $S = S$. This seems really obvious, and that's because it is. But you can't rely on "common sense" when it comes to mathematical intuition. This will come up later in the [logic](#mathematics-as-a-language) section, but for now, just keep that in mind.
+
+                    It follows, in the same manner as algebraic properties, that for any sets $A, B, C$:
+                    $$\text{if } A = B \text{ then } B = A \quad \text{(commutativity)}$$
+                    $$\text{if } A = B \text{ and } B = C \text{, then } A = C \quad \text{(transitive property)}$$
+                    And by combining set membership and the transitive property, we get:
+                    $$\text{if } A = B \text{ and } A \in C \text{, then } B \in C$$
+                    $$\text{if } A = B \text{ and } C \in A \text{, then } C \in B$$
+
+                    ## Set Operations
+                    ### Binary Operations
+                    Let $A$ and $B$ be sets. There are three binary (takes in two inputs) operations that can be performed on sets. Anyone who's ever worked with the Blender boolean modifier will be intimately familiar with this. They are:
+                    * **Union** ($A \cup B$): produces a set containing all elements in $A$ *and* $B$ (or both).
+                    * **Intersection** ($A \cap B$): produces a set containing all elements in *both* $A$ and $B$.
+                    * **Difference** ($A - B$): produces a set containing all elements in $A$ that *aren't* in $B$. It then follows that if $A\subseteq B$, then since all elements of $A$ are also in $B$, $A - B = \varnothing$.
+
+                    For example, let $A = \{1, 2, 3, 4\}$ and $B = \{2,4,6,8\}$. Applying all three operations, we get:
+                    $$A \cup B = \{1, 2, 3, 4, 6, 8\}$$
+                    $$A \cap B = \{2, 4\}$$
+                    $$A - B = \{1, 3\}$$
+
+                    > If there are no elements in common between sets $A$ and $B$ &mdash; if $A \cap B = \varnothing$ &mdash; then $A$ and $B$ are called **disjoint sets**.
+
+                    > Sometimes the difference operation is notated as $A \backslash B$ instead of $A - B$. Ask your professor which is right for you.
+
+                    ### Powerset
+                    There are also other set operations, such as the **powerset** operation, which is the set of all possible subsets of a set. Don't make this a drinking game, the number of "set" utterances in the previous sentence was too much, so let's break that down.
+
+                    Suppose we have some set $S$. Let's define a powerset $\mathcal{P}(S)$ and imagine it's a box with nothing in it... yet. Assuming $S$ isn't an empty set &mdash; that is, it contains at least one element &mdash; the empty set itself $(\varnothing)$ is a subset of $S$, so we put it in the $\mathcal{P}(S)$ box. Also, since we're not talking about proper subsets, just subsets in general, we can also put the entirety of $S$ into the box. From here, we put every other of every possible length subset of $S$ into the box. Consider this analogy: if $S$ was a candy bowl, what are the different combinations of candy you can take out of the bowl (and yes, taking nothing and taking everything are both counted as "combinations").
+
+                    > Those familiar with combinatorics may point out the particular use of "combination" here, and not "permutation." This is because, as stated [previously](#what-are-sets), order doesn't matter.
+
+                    For example, let's say $S = \{1, 2, 3\}$. The powerset (all possible "candy combinations") is defined as follows:
+                    $$\mathcal{P}(S) = \{\{\},\{1\},\{2\},\{3\},\{1,2\},\{2,3\},\{1,3\},\{1,2,3\}\}$$
+                    This is also sometimes denoted as $2^S$, since the cardinality of the powerset is $2^{|S|}$, or in this case, $2^3 = 8$.
+
+                    ## Special Number Sets
+                    Some sets of numbers are so commonly referred to by mathematicians that they have their own names and symbols. The symbols used for these special sets are capital letters (like other sets) but with either bolding (like this: $\bm{R}$) or the Blackboard Bold typeface (like this: $\mathbb{R}$). For this file, I'll be using Blackboard Bold because it's more familiar to me (and slightly easier to handwrite).
+
+                    The most common special sets are:
+                    * Integers: $\mathbb{Z} = \{..., -2, -1, 0, 1, 2, ...\}$. Note: it's "Z" for "**Z**ahlen" (German for "numbers"). English isn't the only language.
+                    * Rational numbers: $\mathbb{Q}$ for any number that can be represented as a fraction of two integers. Don't ask why this one is "Q" and not "R", the history gets really messy.
+                    * Real numbers: $\mathbb{R}$ for the real numbers (both rational and irrational).
+                    > This one ($\mathbb{R}$) is used most often (until you get to complex analysis), and as such, it can often be assumed that when someone writes $x$ with no explicit set membership, that they meant "a real number $x$" or "$x \in \mathbb{R}$". In order to clear up ambiguity during proofs, it is advised you write something to the effect of "$x \in \mathbb{R}$" anyway, even if it's implied by course circumstance.
+                    * Complex numbers: $\mathbb{C}$. If you're not doing complex analysis, don't worry about this one. If you're doing complex analysis, please worry about this one.
+                    > Some textbooks may also list the natural numbers ($\mathbb{N}$) here, but there's one small issue: it's not exactly clear what it encompasses, between authors. Some people may define it as "the set of non-negative integers" or $\mathbb{N} = \{0, 1, 2, 3, ...\}$, but others define it as "the set of positive integers" (excluding zero) or $\mathbb{N} = \{1, 2, 3, ...\}$. Always ask for clarification if you're unsure.
+
+                    Sometimes people put superscripts (symbols floating in the top right, like exponents) after the main set letter to further specify the set. This could be plus signs ($^+$) and minus signs ($^-$) to indicate positive and negative, respectively; $\mathbb{Z}^-$ would be the set of negative integers. This could also be inequality symbols; for example, $\mathbb{R}^{\geq 2}$ would be the set of real numbers greater than or equal to 2.
+                    > If you use this notation, do not place just a number in the superscript. $\mathbb{R}^{\geq 2}$ is very different from $\mathbb{R}^2$. Again, ask if you're unsure. Notation can sometimes be very subjective because humans are fickle and can't seem to agree on things, even in mathematics.
+
+                    There are, of course, other special sets like $\mathbb{W}$, $\mathbb{A}$, $\mathbb{X}$, and so on, but you need not concern yourself with them at this time. To prevent ambiguity, other special sets will likely be defined as such:
+                    $$\text{Let } \mathbb{P} \text{ be the set of [insert something here]}.$$
+
+                    ## Set-Builder Notation
+                    ### Roster Notation
+                    The notation for sets we've been using up until this point is called "roster notation", with "roster" being another word for "list". You can probably see why, you're just listing all the elements out, or enough to eke out a pattern. But what if there was a way to notate a bunch of numbers (or even infinite) with a common pattern? There is! I mean, you could just write it out using words, like so:
+                    * $S = \{\text{prime numbers}\}$
+                    * $S = \{\text{integers whose squares are bigger than 42}\}$
+                    * $S = \{\text{real numbers a person can write}\}$
+                    * $\text{etc.}$
+
+                    However, this can lead to ambiguity, and isn't very mathematical. Where are the symbols? See, mathematicians are busy and don't want to write a lot. The purpose of mathematical language is to be as concise and unambiguous as possible, so we can't have vagueness like this. What even is "real numbers a person can write", anyway? I mean, yeah, I guess you could write out a googolplex given enough time, but... why? Why do that to yourself? Why not do something fun like build a set?
+
+                    ### Build a Set!
+                    Welcome to Build-a-Set workshop, where I kind of lied about this being fun. But it is important. **Set-builder notation** is a method of notating sets by stating the property (or properties) each element has in common. There are three (questionably four) main parts to set-builder notation:
+                    1. The **variable** (usually $x$), which can have any value in
+                    2. The **domain** (this is the questionable one). The domain is just the set of values that $x$ could be, usually one of the [special sets](#special-number-sets) like $\mathbb{R}$ or $\mathbb{Z}$, or something. As noted in that section, in real analysis (as in "real numbers" not "real or fake"), it can be taken that $x \in \mathbb{R}$ unless otherwise stated, but it's good practice to write it anyway.
+                    3. The **separator**, which is either $|$ or $:$, depending on who's teaching. This is read as "such that" (often abbreviated to "s.t.") or "for which".
+                    4. The **predicate** (or the *rule*), which is the thing that needs to be true for all $x$ in the set. This is often notated as $\Phi(x)$ (the Greek letter phi). The predicate can be made up of multiple conditions, but it just called "the predicate" in the singular.
+
+                    Let's look at an example. Define a set $S$ as the following:
+                    $$S = \{x \in \mathbb{Z} : x^2 > 42\}$$
+                    In plain English, this is read as "the set of all $x$ that are integers such that the square of $x$ is greater than 42." Breaking this down into the four aforementioned parts, we get:
+
+                    * $S = \{...\}$ "The set of"
+                    * $x$ "all (values of) $x$..." (part 1)
+                    * $\in \mathbb{Z}$ "... that are integers" (part 2)
+                    * $:$ "such that" (part 3)
+                    * $x^2 > 42$ "the square of $x$ is greater than 42" (part 4)
+
+                    Sometimes the predicate just has English words in it because people can't agree on what notation to use. For instance, what do you think this means?:
+                    $$A = \{x : x \in \mathbb{R} \text{ and } x \text{ is prime}\}$$
+
+                    ...
+
+                    Yes, it's the set of all real prime numbers (which is a tiny bit redundant because prime numbers are defined to be real numbers, but that's besides the point). Notice that the domain can come after the separator, as along as it's conjoined to the predicate by the word "and" or [symbolic equivalent](#logical-connectives). What about this one?:
+                    $$B = \{x \in \mathbb{Q} : -1 \leq x \leq 3 \text{ or } x^2 = 4\}$$
+
+                    ...
+
+                    This is the set of all rationals between -1 and 3 (including both -1 and 3) and also -2 (because of the second condition). If you didn't get that right away, don't worry, you get better with practice. Note that the predicate here is the *entire expression* "$-1 \leq x \leq 3 \text{ or } x^2 = 4$", which includes both conditions. If it helps, you can think of the predicate as a list of requirements to obtain membership into the set. Elements that meet these requirements are allowed in, but elements that don't, aren't. With the above example, $-2$ is allowed in because of the word "or" ("meet req. 1 or req. 2, I don't care which"). If it had instead said "and" (both requirements need to be met to "gain entry"), $-2$ isn't between -1 and 3, and thus wouldn't be in the set (not "allowed in").
+
+                    This wouldn't be much of a workshop if I didn't allow you to make your own sets, though, would it? Here are a few exercises to try. I'll put some [solutions](#build-a-set-solutions) at the end of the file. There are, of course, multiple ways to complete these, so don't be put out if your solutions don't match the ones I've given.
+                    1. Define a set $S$ of all negative even numbers.
+                    2. Define a set $S$ of all prime numbers greater than 2.
+                    3. Define a set $A$ for all rational numbers $x$ such that $\cos x$ is an integer.
+                    4. Suppose $f(x) = x^2 + 1$. Define a set $B$ of all real number inputs to $f(x)$ that result in a real number less than or equal to 0. What's the cardinality of this set?
+
+                    ### Interval Notation
+                    This part isn't really part of set-builder notation, but it's important to know anyway. The notation in this part is consistent, but may overlap with other branches of mathematics, so try not to get confused.
+
+                    **Intervals** are continuous sets of real numbers between two endpoints. "Continuous" here meaning there are no numbers missing between the two endpoints. They're all in there. There are three primary types of intervals, which given any real numbers $a$ and $b$, include:
+                    * **Open intervals**, denoted $(a, b)$, which are equivalent to $\{x : a < x < b\}$
+                    * **Closed intervals**, denoted $[a, b]$, which are equivalent to $\{x : a \leq x \leq b\}$
+                    * **Half-open intervals**, denoted as either:
+                        * $[a, b) = \{x : a \leq x < b\}$
+                        * $(a, b] = \{x : a < x \leq b\}$
+
+                    In other words, open intervals *exclude* both endpoints, closed intervals *include* both endpoints, and half-open intervals include one endpoint but excludes the other.
+
+                    > Don't ask whether the interval is "half-open" or "half-closed"; they mean the same thing.
+
+                    Intervals can also have infinity and negative infinity as possible endpoints, but since infinity isn't a number (you can never actually *reach* infinity, no matter how hard you try), that endpoint is automatically denoted as open. Given any real number $c$, we get the following equivalences:
+                    * $[c, \infty) = \{x : c \leq x\}$
+                    * $(c, \infty) = \{x : c < x\}$
+                    * $(-\infty, c] = \{x : x \leq c\}$
+                    * $(-\infty, c) = \{x : x < c\}$
+                    * $(-\infty, \infty) = \{x : x \in \mathbb{R}\} = \mathbb{R}$
+
+                    Since intervals are sets, set membership still applies. And since set membership applies, you can put intervals into set-builder notation. Let's say you wanted to define a set $S$ where every real number $x$ has to either be between -1 and 3 (inclusive) or its square equals 16. How would you write this?
+
+                    ...
+
+                    Here's a possible solution:
+                    $$S = \{x \in \mathbb{R} : x \in [-1, 3] \text{ or } x^2 = 16\}$$
+                    This is, of course, equivalent to:
+                    $$S = \{x \in \mathbb{R} : -1 \leq x \leq 3 \text{ or } x^2 = 16\}$$
+
+                    > A common interval that'll probably come up a bunch is the **unit interval** $[0, 1]$, or the closed interval between 0 and 1. This is sometimes denoted by the capital letter "$I$".
+
+                    Let's try building some intervals, shall we? Only read the [solutions](#interval-notation-solutions) after you've tried the exercises. Write an interval for each of the following statements:
+                    1. The set of real numbers between 1 and 2, including 1 and 2.
+                    2. The set of real numbers that are less than or equal to 5, but greater than 0.
+                    3. The set of non-positive real numbers.
+                    4. The set of negative real numbers greater than -2.
+                </md-block>
+            </p>
+        </div>
+    </body>
+</html>
