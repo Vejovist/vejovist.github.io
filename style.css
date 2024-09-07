@@ -112,6 +112,8 @@
     text-align: center;
     font-size: large;
     margin: auto;
+    position: relative;
+    top: 0px; left: 5%;
 }
 
 body {
